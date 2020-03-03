@@ -1,25 +1,35 @@
 <template>
   <nav id="nav_bottom">
-    <div class="content">
-      <i class="fas fa-taxi"></i>
+    <div class="content" v-for="(content, index) in nav" v-bind:key="index">
+      <i :class="'fas fa-' + content.icon" @click="openModal(content.slug)"></i>
       <label>
-        はじめての方へ
-      </label>
-    </div>
-    <div class="content">
-      <i class="fas fa-taxi"></i>
-      <label>
-        特徴
-      </label>
-    </div>
-    <div class="content">
-      <i class="fas fa-taxi"></i>
-      <label>
-        特徴
+        {{ content.title }}
       </label>
     </div>
   </nav>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      nav: [
+        { title: "はじめて!", slug: "first", icon: "user-tag" },
+        { title: "コマンド", slug: "command", icon: "magic" },
+        { title: "保護のかけ方", slug: "protect", icon: "shield-alt" },
+        { title: "お金関連", slug: "createshop", icon: "yen-sign" },
+        { title: "釣り大会", slug: "fishing", icon: "fish" },
+        { title: "投票ボーナス", slug: "vote", icon: "vote-yea" },
+        { title: "寄付", slug: "donate", icon: "piggy-bank" }
+      ]
+    };
+  },
+  methods: {
+    openModal(slug) {
+      this.$emit("openModal", slug);
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 nav#nav_bottom {
@@ -38,15 +48,16 @@ nav#nav_bottom {
     height: 50px;
     text-align: center;
     color: white;
-    margin-right: 10px;
+    margin-right: 20px;
     &:last-of-type {
       margin-right: 0;
     }
     i {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     label {
-      font-size: 0.8rem;
+      padding-top: 2px;
+      font-size: 10px;
       font-weight: normal;
       display: block;
       text-align: center;

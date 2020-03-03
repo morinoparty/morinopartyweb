@@ -1,5 +1,5 @@
 export default {
-  mode: "universal",
+  mode: "spa",
   /*
    ** Headers of the page
    */
@@ -36,7 +36,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["nuxt-i18n", "nuxt-svg-loader"],
+  modules: ["nuxt-i18n", "nuxt-svg-loader", "@nuxtjs/markdownit"],
 
   i18n: {
     locales: ["ja", "en"],
@@ -59,6 +59,9 @@ export default {
         }
       }
     }
+  },
+  markdownit: {
+    injected: true
   },
   /*
    ** Build configuration
