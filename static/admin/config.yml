@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "content"
+    label: "Content"
+    format: "json"
+    folder: "assets/content/blog"
+    create: true
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "URL(英数字を使ってください)", name: "slug", widget: "string" }
+      - { label: "かんたんな説明文", name: "description", widget: "string" }
+      - { label: "作成日", name: "date", widget: "datetime" }
+      - {
+          label: "カバー画像",
+          name: "image",
+          widget: "image",
+          required: false,
+          tagname: "",
+        }
+      - { label: "本文", name: "body", widget: "markdown" }
