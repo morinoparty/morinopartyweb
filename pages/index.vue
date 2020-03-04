@@ -1,29 +1,39 @@
 <template>
   <div id="wrapper">
+    <counter />
     <section id="header">
       <div class="title">
         <h2>
-          {{ $t("header.title.h2[0]") }}<br />{{ $t("header.title.h2[1]") }}
+          {{ $t("header.title.h2[0]") }}
+          <br />
+          {{ $t("header.title.h2[1]") }}
         </h2>
         <logo />
-        <p>
-          {{ $t("header.title.p[0]") }}
-        </p>
+        <p>{{ $t("header.title.p[0]") }}</p>
       </div>
     </section>
-    <section id="body" v-if="showModal">
-      <div class="title">
-        <div class="postdata">
-          <h1>{{ post.title }}</h1>
-          <p>{{ post.description }}</p>
+    <section
+      id="modal"
+      v-if="showModal"
+      v-bind:class="[{ active: showModal_animation_open }]"
+      @click.self="closeModal()"
+    >
+      <div class="modal">
+        <div class="title">
+          <div class="postdata">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.description }}</p>
+          </div>
+          <div class="close" @click="closeModal()">
+            <close />
+            <label>とじる</label>
+          </div>
         </div>
-        <div class="close" v-on:click="closeModal()">
-          <close /><label>とじる</label>
+        <div class="body">
+          <div class="container" v-html="$md.render(post.body)"></div>
         </div>
       </div>
-      <div class="body">
-        <div class="container" v-html="$md.render(post.body)"></div>
-      </div>
+      <div class="background" @click="closeModal()"></div>
     </section>
     <navBottom @openModal="openModal" />
   </div>
@@ -71,17 +81,42 @@ section#header {
     }
   }
 }
-section#body {
-  height: 100vh;
+section#modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(100vh - 50px);
   overflow: hidden;
   overflow-y: scroll;
+  z-index: 1;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  padding: 25px;
+  &.active {
+    opacity: 1;
+    .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .modal {
+    z-index: 2;
+    transform: translateY(50vh) scale(0.8);
+    opacity: 0;
+    transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
   .title {
     position: relative;
     z-index: 2;
     overflow: hidden;
     max-width: 100%;
-    height: 300px;
-    background-color: rgba(255, 255, 255, 0.3);
+    height: 40vh;
+    background-color: rgba(0, 121, 7, 0.5);
+    backdrop-filter: blur(10px);
     .postdata {
       z-index: 3;
       opacity: 1;
@@ -90,7 +125,10 @@ section#body {
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
-      max-width: 700px;
+      padding-left: 30px;
+      padding-right: 30px;
+      max-width: 730px;
+      color: white;
       h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
@@ -115,6 +153,8 @@ section#body {
     }
   }
   .body {
+    position: relative;
+    z-index: 2;
     padding-top: 50px;
     padding-bottom: 200px;
     background-color: white;
@@ -122,9 +162,9 @@ section#body {
   }
   .container {
     margin: auto;
-    padding-left: 0;
-    padding-right: 0;
-    max-width: 700px;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 730px;
     img {
       height: auto;
       width: calc(100% + 30px);
@@ -193,6 +233,7 @@ section#body {
 <script>
 import logo from "~/assets/svg/moripalogo.svg";
 import close from "~/assets/svg/times-solid.svg";
+import counter from "~/components/playercount_circle.vue";
 import navBottom from "~/components/nav_bottom.vue";
 
 import axios from "axios";
@@ -201,11 +242,14 @@ export default {
   components: {
     logo,
     close,
+    counter,
     navBottom
   },
   data() {
     return {
       showModal: false,
+      showModal_animation_open: false,
+      showModal_animation_close: false,
       post: {}
     };
   },
@@ -222,12 +266,18 @@ export default {
       this.post = await require(`~/assets/content/blog/${slug}.json`);
       console.log(this.post);
       this.showModal = true;
+      window.setTimeout(v => {
+        this.showModal_animation_open = true;
+      }, 1);
     },
     closeModal() {
-      this.showModal = false;
-      this.post = {};
-      console.log(this.post);
-      window.history.pushState(null, null, "/");
+      this.showModal_animation_open = false;
+      window.setTimeout(v => {
+        this.showModal = false;
+        this.post = {};
+        console.log(this.post);
+        window.history.pushState(null, null, "/");
+      }, 500);
     }
   }
 };

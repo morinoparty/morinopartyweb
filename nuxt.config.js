@@ -55,7 +55,12 @@ export default {
           }
         },
         en: {
-          welcome: "Welcome"
+          header: {
+            title: {
+              h2: ["Let's start living together.", "In the forest."],
+              p: ["MorinoParty is a community centered on Minecraft Server."]
+            }
+          }
         }
       }
     }
