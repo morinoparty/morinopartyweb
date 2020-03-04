@@ -1,13 +1,30 @@
 <template>
   <div class="counter" v-if="loading">
-    <h3>
-      <span>{{info}}</span>
-      <br />人
-    </h3>
-    <p>プレイ中!</p>
+    <div class="num">
+      <div>
+        <span>{{ info }}</span>
+        <br />
+        <p>{{ $t("counter_circle.text[0]") }}</p>
+      </div>
+    </div>
+    <p>{{ $t("counter_circle.text[1]") }}</p>
   </div>
 </template>
 
+<i18n>
+{
+  "ja": {
+    "counter_circle": {
+      "text": ["人", "プレイ中!"]
+    }
+  },
+  "en": {
+    "counter_circle": {
+      "text": ["users", "Now Playing!"]
+    }
+  }
+}
+</i18n>
 <style lang="scss">
 .counter {
   z-index: 0;
@@ -15,7 +32,8 @@
   position: fixed;
   top: 15px;
   right: 15px;
-  h3 {
+  text-align: center;
+  .num {
     margin: 0;
     color: white;
     width: 100px;
@@ -28,8 +46,17 @@
     border-radius: 50%;
     transform: rotate(15deg);
     font-weight: bold;
+    margin: 0;
     span {
+      display: inline-block;
       font-size: 40px;
+    }
+    p {
+      margin: 0;
+      font-size: 13px;
+      margin-top: -10px;
+      text-align: right;
+      transform: translateX(-5px);
     }
   }
   p {

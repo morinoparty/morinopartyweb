@@ -36,33 +36,27 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["nuxt-i18n", "nuxt-svg-loader", "@nuxtjs/markdownit"],
+  modules: [
+    [
+      "nuxt-i18n",
+      {
+        vueI18nLoader: true,
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: "i18n_redirected"
+        }
+      }
+    ],
+    "nuxt-svg-loader",
+    "@nuxtjs/markdownit"
+  ],
 
   i18n: {
     locales: ["ja", "en"],
     defaultLocale: "ja",
     vueI18n: {
       fallbackLocale: "ja",
-      messages: {
-        ja: {
-          header: {
-            title: {
-              h2: ["共同生活を始めよう。", "もりの中で。"],
-              p: [
-                "もりのパーティ!は、マインクラフトサーバーを中心としたコミュニティです。"
-              ]
-            }
-          }
-        },
-        en: {
-          header: {
-            title: {
-              h2: ["Let's start living together.", "In the forest."],
-              p: ["MorinoParty is a community centered on Minecraft Server."]
-            }
-          }
-        }
-      }
+      messages: {}
     }
   },
   markdownit: {

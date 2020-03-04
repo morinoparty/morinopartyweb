@@ -26,4 +26,12 @@ collections:
           required: false,
           tagname: "",
         }
-      - { label: "本文", name: "body", widget: "markdown" }
+      - { label: "本文 (日本語)", name: "body", widget: "markdown" }
+
+      - { label: "タイトル (英語)", name: "title_en", widget: "string" }
+      - {
+          label: "かんたんな説明文 (英語)",
+          name: "description_en",
+          widget: "string",
+        }
+      - { label: "本文 (英語)", name: "body_en", widget: "markdown" }

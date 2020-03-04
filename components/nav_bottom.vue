@@ -1,31 +1,62 @@
 <template>
   <nav id="nav_bottom">
-    <div class="content" v-for="(content, index) in nav" v-bind:key="index">
-      <div v-if="content.slug">
-        <i :class="content.icon" @click="openModal(content.slug)"></i>
-        <label>{{ content.title }}</label>
+    <div class="list">
+      <div class="content" v-for="(content, index) in nav" v-bind:key="index">
+        <a v-if="content.path" :href="content.path">
+          <div class="icon">
+            <i :class="content.icon"></i>
+          </div>
+          <i18n :path="content.slug" tag="label" />
+        </a>
+        <div v-else @click="openModal(content.slug)">
+          <div class="icon">
+            <i :class="content.icon"></i>
+          </div>
+          <i18n :path="content.slug" tag="label" />
+        </div>
       </div>
-      <a v-if="content.path" :href="content.path">
-        <i :class="content.icon"></i>
-        <label>{{ content.title }}</label>
-      </a>
     </div>
   </nav>
 </template>
+
+<i18n>
+{
+  "ja": {
+    "first": "はじめて!",
+    "command": "コマンド",
+    "protect": "保護のかけ方",
+    "createshop": "お金関連",
+    "fishing": "釣り大会",
+    "donate": "寄付",
+    "vote": "投票ボーナス",
+    "discord": "Discord"
+  },
+  "en": {
+    "first": "Newbie!",
+    "command": "Commands",
+    "protect": "How to Protect",
+    "createshop": "Balance",
+    "fishing": "Fishing",
+    "donate": "Donate",
+    "vote": "Vote Bonous",
+    "discord": "Discord"
+  }
+}
+</i18n>
 <script>
 export default {
   data() {
     return {
       nav: [
-        { title: "はじめて!", slug: "first", icon: "fas fa-user-tag" },
-        { title: "コマンド", slug: "command", icon: "fas fa-magic" },
-        { title: "保護のかけ方", slug: "protect", icon: "fas fa-shield-alt" },
-        { title: "お金関連", slug: "createshop", icon: "fas fa-yen-sign" },
-        { title: "釣り大会", slug: "fishing", icon: "fas fa-fish" },
-        { title: "投票ボーナス", slug: "vote", icon: "fas fa-vote-yea" },
-        { title: "寄付", slug: "donate", icon: "fas fa-piggy-bank" },
+        { slug: "first", icon: "fas fa-user-tag" },
+        { slug: "command", icon: "fas fa-magic" },
+        { slug: "protect", icon: "fas fa-shield-alt" },
+        { slug: "createshop", icon: "fas fa-yen-sign" },
+        { slug: "fishing", icon: "fas fa-fish" },
+        { slug: "vote", icon: "fas fa-vote-yea" },
+        { slug: "donate", icon: "fas fa-piggy-bank" },
         {
-          title: "Discord",
+          slug: "discord",
           path: "https://discordapp.com",
           icon: "fab fa-discord"
         }
@@ -47,29 +78,39 @@ nav#nav_bottom {
   left: 50%;
   z-index: 99;
   transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  border: solid 2px white;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 2px #007907;
   backdrop-filter: blur(20px);
   padding: 10px 25px;
   border-radius: 50px;
+  .list {
+    display: flex;
+  }
   .content {
     display: inline-block;
     min-width: 50px;
     height: 50px;
     text-align: center;
     color: #007907;
-
     margin-right: 20px;
     &:last-of-type {
       margin-right: 0;
+    }
+    .icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
     }
     i {
       font-size: 1.8rem;
     }
     label {
-      padding-top: 2px;
-      font-size: 10px;
-      font-weight: normal;
+      padding-top: 4px;
+      font-size: 11px;
+      font-weight: bold;
       display: block;
       text-align: center;
     }

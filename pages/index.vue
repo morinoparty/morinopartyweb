@@ -21,16 +21,27 @@
       <div class="modal">
         <div class="title">
           <div class="postdata">
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.description }}</p>
+            <div v-if="$i18n.locale == 'ja'">
+              <h1>{{ post.title }}</h1>
+              <p>{{ post.description }}</p>
+            </div>
+            <div v-else>
+              <h1>{{ post.title_en }}</h1>
+              <p>{{ post.description_en }}</p>
+            </div>
           </div>
           <div class="close" @click="closeModal()">
             <close />
-            <label>とじる</label>
+            <label>{{ $t("modal.close[0]") }}</label>
           </div>
         </div>
         <div class="body">
-          <div class="container" v-html="$md.render(post.body)"></div>
+          <div
+            class="container"
+            v-html="$md.render(post.body)"
+            v-if="$i18n.locale == 'ja'"
+          ></div>
+          <div class="container" v-html="$md.render(post.body_en)" v-else></div>
         </div>
       </div>
       <div class="background" @click="closeModal()"></div>
@@ -38,7 +49,34 @@
     <navBottom @openModal="openModal" />
   </div>
 </template>
-
+<i18n>
+{
+  "ja": {
+    "header": {
+      "title": {
+        "h2": ["共同生活を始めよう。", "もりの中で。"],
+        "p": [
+          "もりのパーティ!は、マインクラフトサーバーを中心としたコミュニティです。"
+        ]
+      }
+    },
+    "modal": {
+      "close": ["とじる"]
+    }
+  },
+  "en": {
+    "header": {
+      "title": {
+        "h2": ["Let's start living together.", "In the forest."],
+        "p": ["MorinoParty is a community centered on Minecraft Server."]
+      }
+    },
+    "modal": {
+      "close": ["Close"]
+    }
+  }
+}
+</i18n>
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,900");
 * {
