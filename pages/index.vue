@@ -1,17 +1,57 @@
 <template>
-  <div id="wrapper">
+  <div>
     <counter />
-    <section id="header">
-      <div class="title">
-        <h2>
-          {{ $t("header.title.h2[0]") }}
-          <br />
-          {{ $t("header.title.h2[1]") }}
-        </h2>
-        <logo />
-        <p>{{ $t("header.title.p[0]") }}</p>
-      </div>
-    </section>
+    <language />
+
+    <impression
+      class="header"
+      position="left"
+      background="https://morino.party/assets/background_ap_2.webp"
+    >
+      <h2>
+        {{ $t("impression.header.h2[0]") }}
+        <br />
+        {{ $t("impression.header.h2[1]") }}
+      </h2>
+      <logo />
+      <p>{{ $t("impression.header.p[0]") }}</p>
+    </impression>
+    <impression
+      position="right"
+      background="/index/impression_1.png"
+      :comment="$t('impression.1.comment[0]')"
+    >
+      <h2>
+        {{ $t("impression.1.h2[0]") }}
+      </h2>
+      <p>
+        {{ $t("impression.1.p[0]") }}
+      </p>
+    </impression>
+    <impression
+      position="left"
+      background="/index/impression_2.png"
+      :comment="$t('impression.2.comment[0]')"
+    >
+      <h2>
+        {{ $t("impression.2.h2[0]") }}
+      </h2>
+      <p>
+        {{ $t("impression.2.p[0]") }}
+        <br />
+        {{ $t("impression.2.p[1]") }}
+      </p>
+    </impression>
+    <impression position="right" background="/index/impression_3.png">
+      <h2>
+        {{ $t("impression.3.h2[0]") }}
+      </h2>
+      <p>
+        {{ $t("impression.3.p[0]") }}<br />
+        {{ $t("impression.3.p[1]") }}
+      </p>
+    </impression>
+
     <section
       id="modal"
       v-if="showModal"
@@ -31,8 +71,8 @@
             </div>
           </div>
           <div class="close" @click="closeModal()">
-            <close />
             <label>{{ $t("modal.close[0]") }}</label>
+            <close />
           </div>
         </div>
         <div class="body">
@@ -46,18 +86,34 @@
       </div>
       <div class="background" @click="closeModal()"></div>
     </section>
+
     <navBottom @openModal="openModal" />
   </div>
 </template>
 <i18n>
 {
   "ja": {
-    "header": {
-      "title": {
+    "impression": {
+      "header" : {
         "h2": ["共同生活を始めよう。", "もりの中で。"],
         "p": [
-          "もりのパーティ!は、マインクラフトサーバーを中心としたコミュニティです。"
+          "もりのパーティは、マインクラフトサーバーを中心としたコミュニティです。"
         ]
+      },
+      "1" : {
+        "h2": ["走って、木を切って、あそびまわろう。"],
+        "p": ["もりのパーティは、”だいたいバニラ”なマインクラフトをあそぶことができるマルチサーバーです。"],
+        "comment": ["首都もりもとの様子"]
+      },
+      "2" : {
+        "h2": ["いろんなことを起こそう。できないことをやろう。"],
+        "p": ["一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!","マルチプレイならではの楽しみ方を、全力で楽しみましょう！"],
+        "comment": ["有志によって整備されたエンドポータル付近"]
+      },
+      "3" : {
+        "h2": ["いろんな出会いがここに。"],
+        "p": ["もりのパーティでは、いろんなな人達が共同生活しています。","ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。"],
+        "comment": ["有志によって整備されたエンドポータル付近"]
       }
     },
     "modal": {
@@ -65,10 +121,26 @@
     }
   },
   "en": {
-    "header": {
-      "title": {
-        "h2": ["Let's start living together.", "In the forest."],
+    "impression": {
+      "header": {
+        "h2": ["Live together.", "In the forest."],
         "p": ["MorinoParty is a community centered on Minecraft Server."]
+      },
+      
+      "1" : {
+        "h2": ["走って、木を切って、あそびまわろう。"],
+        "p": ["もりのパーティは、”だいたいバニラ”なマインクラフトをあそぶことができるマルチサーバーです。"],
+        "comment": ["首都もりもとの様子"]
+      },
+      "2" : {
+        "h2": ["いろんなことを起こそう。できないことをやろう。"],
+        "p": ["一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!","マルチプレイならではの楽しみ方を、全力で楽しみましょう！"],
+        "comment": ["有志によって整備されたエンドポータル付近"]
+      },
+      "3" : {
+        "h2": ["いろんな出会いがここに。"],
+        "p": ["もりのパーティでは、いろんなな人達が共同生活しています。","ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。"],
+        "comment": ["有志によって整備されたエンドポータル付近"]
       }
     },
     "modal": {
@@ -84,41 +156,7 @@
     Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
 }
-#wrapper {
-  background-image: url("https://morino.party/assets/background_ap_2.webp");
-  display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  height: 100vh;
-}
-section#header {
-  height: 100vh;
-  background-color: rgba(0, 70, 3, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .title {
-    padding-left: 50px;
-    padding-right: 50px;
-    color: white;
-    h2 {
-      font-size: 2.4rem;
-      line-height: 2;
-      font-feature-settings: "palt" 1;
-      letter-spacing: 0.05em;
-      margin-bottom: 25px;
-      // text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 20px;
-    }
-    svg {
-      margin-bottom: 40px;
-      height: 4rem;
-      // filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 5px 10px);
-    }
-    p {
-      font-weight: bold;
-      // text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px;
-    }
-  }
-}
+
 section#modal {
   position: fixed;
   z-index: 100;
@@ -175,7 +213,7 @@ section#modal {
     .close {
       position: absolute;
       top: 20px;
-      left: 20px;
+      right: 20px;
       display: flex;
       color: white;
       svg {
@@ -184,7 +222,7 @@ section#modal {
         fill: white !important;
       }
       label {
-        padding-left: 10px;
+        padding-right: 10px;
         display: block;
         align-self: center;
       }
@@ -270,8 +308,12 @@ section#modal {
 
 <script>
 import logo from "~/assets/svg/moripalogo.svg";
+import imglogo from "~/assets/svg/moripa-img-logo.svg";
 import close from "~/assets/svg/times-solid.svg";
+
 import counter from "~/components/playercount_circle.vue";
+import language from "~/components/language_swicher.vue";
+import impression from "~/components/section/impression.vue";
 import navBottom from "~/components/nav_bottom.vue";
 
 import axios from "axios";
@@ -279,8 +321,11 @@ import axios from "axios";
 export default {
   components: {
     logo,
+    imglogo,
     close,
     counter,
+    language,
+    impression,
     navBottom
   },
   data() {
@@ -302,7 +347,6 @@ export default {
     async openModal(slug) {
       window.history.pushState(null, null, "/" + slug);
       this.post = await require(`~/assets/content/blog/${slug}.json`);
-      console.log(this.post);
       this.showModal = true;
       window.setTimeout(v => {
         this.showModal_animation_open = true;
@@ -313,7 +357,6 @@ export default {
       window.setTimeout(v => {
         this.showModal = false;
         this.post = {};
-        console.log(this.post);
         window.history.pushState(null, null, "/");
       }, 500);
     }

@@ -74,7 +74,7 @@ export default {
 <style lang="scss">
 nav#nav_bottom {
   position: fixed;
-  bottom: 30px;
+  bottom: 25px;
   left: 50%;
   z-index: 99;
   transform: translateX(-50%);
@@ -87,6 +87,7 @@ nav#nav_bottom {
     display: flex;
   }
   .content {
+    white-space: nowrap;
     display: inline-block;
     min-width: 50px;
     height: 50px;
