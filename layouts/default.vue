@@ -1,14 +1,15 @@
 <template>
   <div>
     <nuxt />
+    <language />
   </div>
 </template>
 
 <script>
-import navBottom from "~/components/nav_bottom.vue";
+import language from "~/components/language_swicher.vue";
 export default {
   components: {
-    navBottom
+    language
   }
 };
 </script>

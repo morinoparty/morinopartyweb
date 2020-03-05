@@ -1,6 +1,6 @@
 <template>
   <nav id="nav_bottom">
-    <div class="list">
+    <div :class="type" v-if="type == 'top'">
       <div class="content" v-for="(content, index) in nav" v-bind:key="index">
         <a v-if="content.path" :href="content.path">
           <div class="icon">
@@ -13,6 +13,29 @@
             <i :class="content.icon"></i>
           </div>
           <i18n :path="content.slug" tag="label" />
+        </div>
+      </div>
+    </div>
+    <div :class="type" v-else>
+      <nuxt-link class="logo" v-if="$i18n.locale == 'ja'" :to="'/'">
+        <logo />
+      </nuxt-link>
+      <nuxt-link class="logo" v-else :to="'/' + $i18n.locale + '/'">
+        <logo />
+      </nuxt-link>
+      <div class="slider">
+        <div v-for="(content, index) in nav" :key="index" class="content">
+          <a v-if="content.path" :href="content.path">
+            <i18n :path="content.slug" tag="label" />
+          </a>
+          <div v-else>
+            <nuxt-link v-if="$i18n.locale == 'ja'" :to="'/' + content.slug">
+              <i18n :path="content.slug" tag="label" />
+            </nuxt-link>
+            <nuxt-link v-else :to="'/' + $i18n.locale + '/'+ content.slug">
+              <i18n :path="content.slug" tag="label" />
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
@@ -48,7 +71,12 @@
 }
 </i18n>
 <script>
+import logo from "~/assets/svg/moripalogo.svg";
 export default {
+  props: ["type"],
+  components: {
+    logo
+  },
   data() {
     return {
       nav: [
@@ -87,60 +115,140 @@ export default {
 
 <style lang="scss">
 nav#nav_bottom {
-  position: fixed;
-  bottom: 25px;
-  left: 50%;
-  z-index: 99;
-  transform: translateX(-50%);
-  background-color: rgba(255, 255, 255, 0.7);
-  border: solid 2px #007907;
-  backdrop-filter: blur(20px);
-  padding: 10px 25px;
-  border-radius: 50px;
-  .list {
+  .top {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    z-index: 99;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: solid 2px #007907;
+    backdrop-filter: blur(20px);
+    padding: 10px 25px;
+    border-radius: 50px;
     display: flex;
-  }
-  .content {
-    white-space: nowrap;
-    display: inline-block;
-    min-width: 50px;
-    height: 50px;
-    text-align: center;
-    color: #007907;
-    margin-right: 20px;
-    margin-right: 10px;
-    border-right: 1px solid rgba(0, 121, 7, 0.5);
-    padding-right: 10px;
-    &:last-of-type {
-      margin-right: 0;
-      padding-right: 0;
-      border-right: none;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-    .icon {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-    }
-    i {
-      font-size: 1.8rem;
-    }
-    label {
-      padding-top: 4px;
-      font-size: 11px;
-      font-weight: bold;
-      display: block;
+    .content {
+      white-space: nowrap;
+      display: inline-block;
+      min-width: 50px;
+      height: 50px;
       text-align: center;
+      color: #007907;
+      margin-right: 20px;
+      margin-right: 10px;
+      border-right: 1px solid rgba(0, 121, 7, 0.5);
+      padding-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+        padding-right: 0;
+        border-right: none;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      .icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+      }
+      i {
+        font-size: 1.8rem;
+      }
+      label {
+        padding-top: 4px;
+        font-size: 11px;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+      }
+      a,
+      a:hover {
+        text-decoration: none;
+        color: #007907;
+      }
     }
+  }
+  .page {
+    position: fixed;
+    transform: translateY(-39px);
+    display: flex !important;
+    overflow-x: hidden;
+    z-index: 5;
+    width: 100%;
+    background-color: #007907;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
     a,
     a:hover {
       text-decoration: none;
-      color: #007907;
+      color: white;
+      opacity: 0.8;
+      font-size: 0.8rem;
+      font-weight: bold;
+      &.logo {
+        opacity: 1;
+      }
+    }
+
+    svg {
+      vertical-align: middle;
+      height: 19px;
+      min-width: 147.77px;
+      padding: 10px 0px;
+      fill: #fff;
+      overflow: hidden;
+    }
+    .content {
+      display: inline-block;
+      padding: 0 10px;
+      white-space: nowrap;
+      align-self: center;
+    }
+    .slider {
+      display: flex;
+      justify-content: flex-start;
+      white-space: normal;
+      position: relative;
+      padding: 0;
+      padding-left: 0px;
+      padding-right: 0px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      .scroll {
+        min-width: 150px;
+        max-width: 150px;
+        overflow-y: hidden;
+        max-height: 250px;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar {
+      overflow: hidden;
+      width: 1px;
+      background: #fafafa;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 1px;
+    }
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
+    &::-webkit-scrollbar-piece {
+      background: #eee;
+    }
+    &::-webkit-scrollbar-piece:start {
+      background: #eee;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #333;
+    }
+    &::-webkit-scrollbar-corner {
+      background: #333;
     }
   }
 }

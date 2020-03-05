@@ -30,9 +30,31 @@ section.impression {
     }
   }
   .content {
+    height: 100vh;
     width: 30%;
     &.right {
       margin-left: auto;
+    }
+    &.height_half {
+      height: 50vh;
+      margin-top: auto;
+      width: 100%;
+      .title {
+        background-color: rgb(239, 201, 0);
+        height: 50vh;
+        text-align: center;
+        color: white;
+      }
+      .box_info {
+        cursor: pointer;
+        background: white;
+        padding: 20px;
+        margin-top: 40px;
+        color: #efc900;
+        h3 {
+          font-size: 1.8rem;
+        }
+      }
     }
   }
   .title {

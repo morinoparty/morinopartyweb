@@ -17,8 +17,8 @@
 <style lang="scss">
 #locale-swicher {
   position: fixed;
-  top: 25px;
-  left: 25px;
+  bottom: 25px;
+  right: 25px;
   z-index: 99;
   .select {
     display: flex;

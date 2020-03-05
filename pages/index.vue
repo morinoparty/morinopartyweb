@@ -1,111 +1,116 @@
 <template>
   <div>
     <counter />
-    <language />
-
     <impression
       class="header"
       position="left"
       background="https://morino.party/assets/background_ap_2.webp"
     >
-      <h2>
-        {{ $t("impression.header.h2[0]") }}
-        <br />
-        {{ $t("impression.header.h2[1]") }}
-      </h2>
+      <h2 v-html="$t('impression.header.h2')"></h2>
       <logo />
-      <p>{{ $t("impression.header.p[0]") }}</p>
+      <p v-html="$t('impression.header.p')"></p>
     </impression>
+
     <impression
-      position="right"
-      background="/index/impression_1.png"
-      :comment="$t('impression.1.comment[0]')"
+      v-for="(content,index) in $t('impression.content')"
+      v-bind:key="index"
+      :position="content.position"
+      :background="content.background"
+      :comment="content.comment"
     >
-      <h2>{{ $t("impression.1.h2[0]") }}</h2>
-      <p>{{ $t("impression.1.p[0]") }}</p>
+      <h2 v-html="content.h2"></h2>
+      <p v-html="content.p"></p>
     </impression>
-    <impression
-      position="left"
-      background="/index/impression_2.png"
-      :comment="$t('impression.2.comment[0]')"
-    >
-      <h2>{{ $t("impression.2.h2[0]") }}</h2>
+
+    <impression position="height_half">
+      <h2>さあ、始めましょう。</h2>
       <p>
-        {{ $t("impression.2.p[0]") }}
-        <br />
-        {{ $t("impression.2.p[1]") }}
+        まずは、はじめての方向けのページをチェックしましょう!
+        <br />ルールなどもこちらに記載されています！
       </p>
-    </impression>
-    <impression position="right" background="/index/impression_3.png">
-      <h2>{{ $t("impression.3.h2[0]") }}</h2>
-      <p>
-        {{ $t("impression.3.p[0]") }}
-        <br />
-        {{ $t("impression.3.p[1]") }}
-      </p>
+      <div @click="openModal('first')" class="box_info">
+        <h3 style="margin: 0px;">はじめての方へ!</h3>
+      </div>
     </impression>
 
     <modal
       v-if="showModal"
-      v-bind:class="[{ active: showModal_animation_open }]"
+      :class="[{modal : true},{ active: showModal_animation_open }]"
       :post="post"
+      type="modal"
       @click.self="closeModal()"
       @closeModal="closeModal"
     />
 
-    <navBottom @openModal="openModal" />
+    <style v-if="showModal">
+  html {
+    overflow: hidden;
+  }
+    </style>
+
+    <navBottom type="top" @openModal="openModal" />
   </div>
 </template>
 
-<i18n>
+<i18n lang="json">
 {
   "ja": {
     "impression": {
       "header" : {
-        "h2": ["共同生活を始めよう。", "もりの中で。"],
-        "p": [
+        "h2": "共同生活を始めよう。<br>もりの中で。",
+        "p": 
           "もりのパーティは、マインクラフトサーバーを中心としたコミュニティです。"
-        ]
       },
-      "1" : {
-        "h2": ["走って、木を切って、あそびまわろう。"],
-        "p": ["もりのパーティは、“だいたいバニラ”で“だいたい最新”のマインクラフトをあそぶことができるマルチプレイサーバーです。"],
-        "comment": ["首都もりもとの様子"]
-      },
-      "2" : {
-        "h2": ["いろんなことを起こそう。できないことをやろう。"],
-        "p": ["一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!","マルチプレイならではの楽しみ方を、全力で楽しみましょう！"],
-        "comment": ["有志によって整備されたエンドポータル付近"]
-      },
-      "3" : {
-        "h2": ["いろんな出会いがここに。"],
-        "p": ["もりのパーティでは、いろんなな人達が共同生活しています。","ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。"],
-        "comment": ["有志によって整備されたエンドポータル付近"]
-      }
+      "content" : [
+        {
+          "position":"right",
+          "background":"/index/impression_1.png",
+          "h2": "走って、木を切って、あそびまわろう。",
+          "p": "もりのパーティは、“だいたいバニラ”で“だいたい最新”のマインクラフトをあそぶことができるマルチプレイサーバーです。",
+          "comment": "首都もりもとの様子"
+        },{
+          "position":"left",
+          "background":"/index/impression_2.png",
+          "h2": "いろんなことを起こそう。できないことをやろう。",
+          "p": "一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!<br>マルチプレイならではの楽しみ方を、全力で楽しみましょう！",
+          "comment": "有志によって整備されたエンドポータル付近"
+        },{
+          "position":"right",
+          "background":"/index/impression_3.png",
+          "h2": "いろんな出会いがここに。",
+          "p": "もりのパーティでは、いろんなな人達が共同生活しています。<br>ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。",
+          "comment": "有志によって整備されたエンドポータル付近"
+        }
+      ]
     }
   },
   "en": {
     "impression": {
       "header": {
-        "h2": ["Live together,", "In the forest."],
-        "p": ["MorinoParty is a community centered on Minecraft Server."]
+        "h2": "Live together,<br>In the forest.",
+        "p": "MorinoParty is a community centered on Minecraft Server."
       },
-      
-      "1" : {
-        "h2": ["走って、木を切って、あそびまわろう。"],
-        "p": ["もりのパーティは、”だいたいバニラ”なマインクラフトをあそぶことができるマルチサーバーです。"],
-        "comment": ["首都もりもとの様子"]
-      },
-      "2" : {
-        "h2": ["いろんなことを起こそう。できないことをやろう。"],
-        "p": ["一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!","マルチプレイならではの楽しみ方を、全力で楽しみましょう！"],
-        "comment": ["有志によって整備されたエンドポータル付近"]
-      },
-      "3" : {
-        "h2": ["いろんな出会いがここに。"],
-        "p": ["もりのパーティでは、いろんなな人達が共同生活しています。","ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。"],
-        "comment": ["有志によって整備されたエンドポータル付近"]
-      }
+      "content" : [
+        {
+          "position":"right",
+          "background":"/index/impression_1.png",
+          "h2": "走って、木を切って、あそびまわろう。",
+          "p": "もりのパーティは、“だいたいバニラ”で“だいたい最新”のマインクラフトをあそぶことができるマルチプレイサーバーです。",
+          "comment": "首都もりもとの様子"
+        },{
+          "position":"left",
+          "background":"/index/impression_2.png",
+          "h2": "いろんなことを起こそう。できないことをやろう。",
+          "p": "一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!<br>マルチプレイならではの楽しみ方を、全力で楽しみましょう！",
+          "comment": "有志によって整備されたエンドポータル付近"
+        },{
+          "position":"right",
+          "background":"/index/impression_3.png",
+          "h2": "いろんな出会いがここに。",
+          "p": "もりのパーティでは、いろんなな人達が共同生活しています。<br>ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。",
+          "comment": "有志によって整備されたエンドポータル付近"
+        }
+      ]
     }
   }
 }

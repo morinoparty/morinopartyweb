@@ -1,6 +1,6 @@
 <template>
-  <section id="modal" @click.self="$emit('closeModal')">
-    <div class="modal">
+  <section id="modal" :class="{ page: type == 'page' }" @click.self="$emit('closeModal')">
+    <div class="content">
       <div class="title">
         <div class="postdata">
           <div v-if="$i18n.locale == 'ja'">
@@ -18,8 +18,18 @@
         </div>
       </div>
       <div class="body">
-        <div class="container" v-html="$md.render(post.body)" v-if="$i18n.locale == 'ja'"></div>
-        <div class="container" v-html="$md.render(post.body_en)" v-else></div>
+        <div v-if="$i18n.locale == 'ja'">
+          <div class="container" v-html="$md.render(post.body)"></div>
+        </div>
+        <div v-else>
+          <div class="container" v-html="$md.render(post.body_en)"></div>
+          <div class="container translate_info">
+            <p>
+              <strong>Translated information may not be up to date.</strong>
+              <br />The original text is written in Japanese(日本語).
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="background" @click="$emit('closeModal')"></div>
@@ -32,7 +42,7 @@ export default {
   components: {
     close
   },
-  props: ["post"]
+  props: ["post", "type"]
 };
 </script>
 
@@ -54,27 +64,44 @@ export default {
 
 <style lang="scss">
 section#modal {
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: calc(100vh - 50px);
-  overflow: hidden;
-  overflow-y: scroll;
-  transition: all 0.5s;
-  background-color: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  padding: 25px;
-  &.active {
+  &.modal {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+    overflow-y: scroll;
+    transition: all 0.5s;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    opacity: 0;
+    &.active {
+      opacity: 1;
+      .content {
+        transform: translateY(0);
+        opacity: 1;
+
+        box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.7);
+      }
+    }
+    .title {
+      backdrop-filter: blur(10px);
+    }
+  }
+  &.page {
     opacity: 1;
-    .modal {
+    .content {
       transform: translateY(0);
       opacity: 1;
     }
+    .title .close {
+      display: none;
+    }
   }
-  .modal {
+  .content {
     z-index: 3;
     transform: translateY(50vh) scale(0.8);
     opacity: 0;
@@ -87,7 +114,6 @@ section#modal {
     max-width: 100%;
     height: 40vh;
     background-color: rgba(0, 121, 7, 0.5);
-    backdrop-filter: blur(10px);
     .postdata {
       z-index: 4;
       opacity: 1;
@@ -136,13 +162,19 @@ section#modal {
     padding-top: 50px;
     padding-bottom: 200px;
     background-color: white;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 703px);
   }
   .container {
     margin: auto;
     padding-left: 15px;
     padding-right: 15px;
     max-width: 730px;
+    &.translate_info {
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      padding-top: 20px;
+      margin-top: 50px;
+    }
+
     img {
       height: auto;
       width: calc(100% + 30px);
