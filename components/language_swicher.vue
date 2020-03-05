@@ -8,8 +8,7 @@
           :key="`Lang${i}`"
           :value="lang.code"
           aria-placeholder="Language"
-          >{{ lang.title }}</option
-        >
+        >{{ lang.title }}</option>
       </select>
     </div>
   </div>
@@ -47,6 +46,9 @@
     box-shadow: none;
     -webkit-appearance: none;
     appearance: none;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 </style>

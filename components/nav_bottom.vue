@@ -29,6 +29,8 @@
     "fishing": "釣り大会",
     "donate": "寄付",
     "vote": "投票ボーナス",
+    "team": "運営チーム",
+    "wiki": "Wiki",
     "discord": "Discord"
   },
   "en": {
@@ -39,6 +41,8 @@
     "fishing": "Fishing",
     "donate": "Donate",
     "vote": "Vote Bonous",
+    "team": "Moderators",
+    "wiki": "Wiki",
     "discord": "Discord"
   }
 }
@@ -55,6 +59,16 @@ export default {
         { slug: "fishing", icon: "fas fa-fish" },
         { slug: "vote", icon: "fas fa-vote-yea" },
         { slug: "donate", icon: "fas fa-piggy-bank" },
+        {
+          slug: "team",
+          path: "https://support.morino.party/team",
+          icon: "fas fa-ambulance"
+        },
+        {
+          slug: "wiki",
+          path: "https://wiki.morino.party/",
+          icon: "fas fa-book"
+        },
         {
           slug: "discord",
           path: "https://discordapp.com",
@@ -94,8 +108,16 @@ nav#nav_bottom {
     text-align: center;
     color: #007907;
     margin-right: 20px;
+    margin-right: 10px;
+    border-right: 1px solid rgba(0, 121, 7, 0.5);
+    padding-right: 10px;
     &:last-of-type {
       margin-right: 0;
+      padding-right: 0;
+      border-right: none;
+    }
+    &:hover {
+      cursor: pointer;
     }
     .icon {
       width: 32px;

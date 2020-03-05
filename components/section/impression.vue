@@ -8,13 +8,8 @@
       </div>
       <div class="space"></div>
     </div>
-    <div class="comment" :class="{ [`${position}`]: true }" v-if="comment">
-      {{ comment }}
-    </div>
-    <div
-      class="background"
-      :style="'background-image: url(' + background + ');'"
-    ></div>
+    <div class="comment" :class="{ [`${position}`]: true }" v-if="comment">{{ comment }}</div>
+    <div class="background" :style="'background-image: url(' + background + ');'"></div>
   </section>
 </template>
 
@@ -85,7 +80,7 @@ section.impression {
   .comment {
     position: absolute;
     bottom: 30px;
-    padding: 15px 30px;
+    padding: 10px 20px;
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border-radius: 50px;

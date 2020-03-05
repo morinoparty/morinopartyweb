@@ -27,7 +27,7 @@
 </i18n>
 <style lang="scss">
 .counter {
-  z-index: 0;
+  z-index: 2;
   text-align: right;
   position: fixed;
   top: 15px;
@@ -38,7 +38,8 @@
     color: white;
     width: 100px;
     height: 100px;
-    background-color: #efc900;
+    background-color: rgba(239, 201, 0, 0.7);
+    backdrop-filter: blur(20px);
     font-size: 1rem;
     display: flex;
     justify-content: center;
@@ -46,7 +47,7 @@
     border-radius: 50%;
     transform: rotate(15deg);
     font-weight: bold;
-    margin: 0;
+    margin-left: auto;
     span {
       display: inline-block;
       font-size: 40px;
