@@ -12,7 +12,7 @@
     </impression>
 
     <impression
-      v-for="(content,index) in $t('impression.content')"
+      v-for="(content, index) in $t('impression.content')"
       v-bind:key="index"
       :position="content.position"
       :background="content.background"
@@ -22,7 +22,10 @@
       <p v-html="content.p"></p>
     </impression>
 
-    <impression position="height_half">
+    <impression
+      position="height_full"
+      background="https://media.discordapp.net/attachments/582015271208878090/683237959235141672/unknown.png"
+    >
       <h2>さあ、始めましょう。</h2>
       <p>
         まずは、はじめての方向けのページをチェックしましょう!
@@ -33,9 +36,11 @@
       </div>
     </impression>
 
+    <auction />
+
     <modal
       v-if="showModal"
-      :class="[{modal : true},{ active: showModal_animation_open }]"
+      :class="[{ modal: true }, { active: showModal_animation_open }]"
       :post="post"
       type="modal"
       @click.self="closeModal()"
@@ -43,9 +48,9 @@
     />
 
     <style v-if="showModal">
-  html {
-    overflow: hidden;
-  }
+      html {
+        overflow: hidden;
+      }
     </style>
 
     <navBottom type="top" @openModal="openModal" />
@@ -122,6 +127,8 @@
   font-family: Noto Sans JP, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
+
+  margin: 0;
 }
 </style>
 
@@ -132,6 +139,8 @@ import imglogo from "~/assets/svg/moripa-img-logo.svg";
 import counter from "~/components/playercount_circle.vue";
 import language from "~/components/language_swicher.vue";
 import impression from "~/components/section/impression.vue";
+import auction from "~/components/section/auction.vue";
+
 import modal from "~/components/modal/post.vue";
 import navBottom from "~/components/nav_bottom.vue";
 
@@ -144,6 +153,7 @@ export default {
     counter,
     language,
     impression,
+    auction,
     modal,
     navBottom
   },

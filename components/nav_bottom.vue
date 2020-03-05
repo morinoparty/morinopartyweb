@@ -32,7 +32,7 @@
             <nuxt-link v-if="$i18n.locale == 'ja'" :to="'/' + content.slug">
               <i18n :path="content.slug" tag="label" />
             </nuxt-link>
-            <nuxt-link v-else :to="'/' + $i18n.locale + '/'+ content.slug">
+            <nuxt-link v-else :to="'/' + $i18n.locale + '/' + content.slug">
               <i18n :path="content.slug" tag="label" />
             </nuxt-link>
           </div>
@@ -118,13 +118,12 @@ nav#nav_bottom {
   .top {
     position: fixed;
     bottom: 25px;
-    left: 50%;
+    left: 25px;
     z-index: 99;
-    transform: translateX(-50%);
     background-color: rgba(255, 255, 255, 0.7);
     border: solid 2px #007907;
     backdrop-filter: blur(20px);
-    padding: 10px 25px;
+    padding: 7px 20px;
     border-radius: 50px;
     display: flex;
     .content {
@@ -134,7 +133,7 @@ nav#nav_bottom {
       height: 50px;
       text-align: center;
       color: #007907;
-      margin-right: 20px;
+      margin-right: 10px;
       margin-right: 10px;
       border-right: 1px solid rgba(0, 121, 7, 0.5);
       padding-right: 10px;
@@ -155,10 +154,10 @@ nav#nav_bottom {
         margin: auto;
       }
       i {
-        font-size: 1.8rem;
+        font-size: 25px;
       }
       label {
-        padding-top: 4px;
+        padding-top: 0px;
         font-size: 11px;
         font-weight: bold;
         display: block;
