@@ -7,6 +7,15 @@
         </div>
       </div>
     </div>
+
+    <div class="players" v-if="players">
+      <img
+        v-for="(player, index) in players"
+        v-bind:key="index"
+        :src="'https://minotar.net/avatar/'+player+'/100.png'"
+        alt
+      />
+    </div>
     <div class="comment" :class="{ [`${position}`]: true }" v-if="comment">{{ comment }}</div>
     <div class="background" :style="'background-image: url(' + background + ');'"></div>
   </section>
@@ -78,7 +87,7 @@ section.impression {
               color: #867000;
               background-color: #fff;
               padding: 0px 10px;
-              border-radius: 10px;
+              border-radius: 20px;
               font-size: 1rem;
               margin-right: 10px;
             }
@@ -96,6 +105,53 @@ section.impression {
     }
     @media (max-width: 767px) {
       width: 100%;
+      .title {
+        height: 50vh;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: calc(100% - 30px);
+        h2 {
+          font-size: 2rem;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+  .players {
+    width: 40%;
+    padding-right: 30%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-rows: repeat(auto-fill, 50px);
+    img {
+      width: 100%;
+      &:nth-of-type(5n - 1) {
+        grid-row: span 2;
+        grid-column: span 2;
+      }
+      &:nth-of-type(15n) {
+        grid-row: span 3;
+        grid-column: span 3;
+      }
+    }
+    @media (max-width: 1400px) {
+      width: 50%;
+      padding-right: 0;
+      .title {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media (max-width: 767px) {
+      height: 50vh;
+      width: 100%;
+      top: inherit;
+      bottom: 0;
+      padding-right: 0;
       .title {
         height: 50vh;
         padding-left: 15px;
@@ -188,6 +244,6 @@ section.impression {
 
 <script>
 export default {
-  props: ["position", "background", "comment"]
+  props: ["position", "background", "comment", "players"]
 };
 </script>

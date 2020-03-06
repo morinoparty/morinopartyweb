@@ -2,7 +2,7 @@
   <div>
     <nuxt style="margin-top: 39px;" />
     <navBottom type="page" />
-    <language />
+    <language class="bottom" />
   </div>
 </template>
 

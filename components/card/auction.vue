@@ -1,13 +1,7 @@
 <template>
   <div>
-    <a
-      class="content"
-      :href="'https://support.morino.party/auctions/' + auction.id"
-    >
-      <div
-        class="image"
-        :style="'background-image: url(' + auction.thumbnail + ');'"
-      >
+    <a class="content" :href="'https://support.morino.party/auctions/' + auction.id">
+      <div class="image" :style="'background-image: url(' + auction.thumbnail + ');'">
         <div class="background-color"></div>
         <div class="info">
           {{ $dayjs(auction.time_limit).format($t("time_limit")) }}
@@ -17,7 +11,7 @@
         <label class="auction_nowprice">{{ highest }}{{ $t("unit") }}</label>
       </div>
       <div class="description">
-        <p>{{ auction.description.slice(0, 30) }}</p>
+        <p>{{ auction.description.slice(0, 30) }}...</p>
       </div>
     </a>
   </div>

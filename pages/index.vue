@@ -23,7 +23,7 @@
       <p v-html="content.p"></p>
     </impression>
 
-    <impression position="height_half" background="/index/joinus.png">
+    <impression position="height_half" background="/index/joinus_3.png">
       <h2>さあ、始めましょう。</h2>
       <p>
         まずは、はじめての方向けのページをチェックしましょう!
@@ -173,21 +173,7 @@ export default {
       showModal: false,
       showModal_animation_open: false,
       // モーダル投稿内容用
-      post: {},
-      opts: {
-        start: 0,
-        dir: "v",
-        loop: false,
-        duration: 300,
-        beforeChange: function(ele, current, next) {
-          console.log("before", current, next);
-          this.index = next;
-        },
-        afterChange: function(ele, current) {
-          this.index = current;
-          console.log("after", current);
-        }
-      }
+      post: {}
     };
   },
   head() {

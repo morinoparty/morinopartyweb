@@ -250,6 +250,16 @@ nav#nav_bottom {
   .top_small {
     bottom: 0;
     top: inherit;
+    height: calc(39px + env(safe-area-inset-bottom));
+    .logo {
+      display: none;
+    }
+    .slider {
+      align-self: baseline;
+    }
+    .content {
+      padding: 8px 10px;
+    }
   }
 }
 </style>

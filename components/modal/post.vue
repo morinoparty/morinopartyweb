@@ -1,9 +1,5 @@
 <template>
-  <section
-    id="modal"
-    :class="{ page: type == 'page' }"
-    @click.self="$emit('closeModal')"
-  >
+  <section id="modal" :class="{ page: type == 'page' }" @click.self="$emit('closeModal')">
     <div class="content">
       <div class="title">
         <div class="postdata">
@@ -106,6 +102,9 @@ section#modal {
     }
     .title .close {
       display: none;
+    }
+    .title {
+      background-color: #43a749;
     }
   }
   .content {
