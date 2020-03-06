@@ -4,22 +4,29 @@
     <p class="status" v-html="$t('playing').replace('CC', count)"></p>
     <figure class="randomplayer" v-if="player_random">
       <div class="flex">
-        <img :src="'https://minotar.net/cube/'+ player_random +'/100.png'" alt />
-        <p v-html="'<strong>'+player_random+'</strong>'+$t('ramdom_player')"></p>
+        <img
+          :src="'https://minotar.net/cube/' + player_random + '/100.png'"
+          alt
+        />
+        <p
+          v-html="
+            '<strong>' + player_random + '</strong>' + $t('ramdom_player')
+          "
+        ></p>
       </div>
     </figure>
     <p class="status">
-      <span class="tag">{{ $t('version') }}</span>
-      <span>{{version}}</span>
+      <span class="tag">{{ $t("version") }}</span>
+      <span>{{ version }}</span>
     </p>
     <p class="status">
-      <span class="tag">{{ $t('ip') }}</span>
+      <span class="tag">{{ $t("ip") }}</span>
       <span>visit.morino.party</span>
     </p>
     <figure class="changePhotos">
-      <h3>{{$t('change_photos.h3')}}</h3>
-      <p>{{$t('change_photos.p')}}</p>
-      <a @click="changePic()">{{$t('change_photos.button')}}</a>
+      <h3>{{ $t("change_photos.h3") }}</h3>
+      <p>{{ $t("change_photos.p") }}</p>
+      <a @click="changePic()">{{ $t("change_photos.button") }}</a>
     </figure>
   </impression>
 </template>
@@ -127,7 +134,9 @@ export default {
         "/index/joinus_3.png",
         "/index/joinus_4.png",
         "/index/joinus_5.png",
-        "/index/joinus_6.png"
+        "/index/joinus_6.png",
+        "/index/joinus_7.png",
+        "/index/joinus_8.png"
       ],
       background: "",
       count: "…",
