@@ -4,10 +4,7 @@
     <p class="status" v-html="$t('playing').replace('CC', count)"></p>
     <figure class="randomplayer" v-if="player_random">
       <div class="flex">
-        <img
-          :src="'https://minotar.net/cube/' + player_random + '/100.png'"
-          alt
-        />
+        <img :src="'https://minotar.net/cube/' + player_random + '/100.png'" alt />
         <p
           v-html="
             '<strong>' + player_random + '</strong>' + $t('ramdom_player')
@@ -48,7 +45,7 @@
     "en" : {
         "title": "Join us now!",
         "playing": "<span>CC people</span> are playing on our server!",
-        "ramdom_player": " is also playing!",
+        "ramdom_player": " is now playing!",
         "version": "Version",
         "ip": "IP",
         "change_photos": {
