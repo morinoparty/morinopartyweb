@@ -92,27 +92,27 @@
   "en": {
     "impression": {
       "header": {
-        "h2": "Live together,<br>In the forest.",
-        "p": "MorinoParty is a community centered on Minecraft Server."
+        "h2": "Spend together,<br>In the forest.",
+        "p": "MorinoParty is a community based on Minecraft Server"
       },
       "content" : [
         {
           "position":"right",
           "background":"/index/impression_1.png",
-          "h2": "Have fun in MORIPA!",
+          "h2": "Have fun in the Morino Party!",
           "p": "Morino Party (Moripa) is the server base on Vanilla (almost without any mods), and joinable in the newest version of Minecraft.",
           "comment": "Morimoto city in Moripa"
         },{
           "position":"left",
           "background":"/index/impression_2.png",
-          "h2": "So, what are you waiting for??",
+          "h2": "Just do it, whatever you want to do. So, what are you waiting for??",
           "p": "Let’s create what you cannot do in a single world, huge survival base, futuristic city, and more other epic buildings. You can achieve with players in Moripa.",
-          "comment": "The epic portal created by admins"
+          "comment": "The epic portals created by players in the server"
         },{
           "position":"right",
           "background":"/index/impression_3.png",
           "h2": "Your participation will create the first step of new connections!!",
-          "p": "In Moripa, there is a lot of people sharing their unique abilities to live in. MIner, Builder, Shop Manager, and more. Let’s have fun on this server. Express your ability, experience bran new atmosphere of the server."
+          "p": "In Moripa, there is a lot of people sharing their unique abilities to live in. Miner, Builder, Shop Manager, and more. Let’s have fun on this server. Express your ability, experience the brand new atmosphere of the server."
         }
       ]
     }

@@ -1,13 +1,7 @@
 <template>
   <div>
-    <a
-      class="content"
-      :href="'https://support.morino.party/auctions/' + auction.id"
-    >
-      <div
-        class="image"
-        :style="'background-image: url(' + auction.thumbnail + ');'"
-      >
+    <a class="content" :href="'https://support.morino.party/auctions/' + auction.id">
+      <div class="image" :style="'background-image: url(' + auction.thumbnail + ');'">
         <div class="background-color"></div>
         <div class="info">
           {{ $dayjs(auction.time_limit).format("M月D日 HH:mmまで") }}
@@ -16,9 +10,7 @@
         <label class="auction_label">開催中のオークション情報</label>
       </div>
       <div class="description">
-        <p>
-          {{ auction.description }}
-        </p>
+        <p>{{ auction.description.slice(0,30) }}</p>
       </div>
     </a>
   </div>
@@ -29,6 +21,7 @@ a.content {
   display: block;
   height: calc(50vh - 40px);
   border: 2px solid rgb(214, 214, 214);
+  background-color: white;
   text-decoration: none;
   color: black;
   .image {
