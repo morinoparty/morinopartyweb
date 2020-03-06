@@ -1,11 +1,7 @@
 <template>
   <div>
     <counter />
-    <impression
-      class="header page-1"
-      position="left"
-      background="https://morino.party/assets/background_ap_2.webp"
-    >
+    <impression class="header page-1" position="left" background="/index/header.jpg">
       <h2 v-html="$t('impression.header.h2')"></h2>
       <logo />
       <p v-html="$t('impression.header.p')"></p>
@@ -24,13 +20,9 @@
     </impression>
 
     <impression position="height_half" background="/index/joinus_3.png">
-      <h2>さあ、始めましょう。</h2>
-      <p>
-        まずは、はじめての方向けのページをチェックしましょう!
-        <br />参加する際に「必須」な参加条件や、絶対にやらなければいけないことを説明しています！
-        絶対確認してください！
-      </p>
-      <a @click="openModal('first')" class="box_info">はじめての方へ!</a>
+      <h2 v-html="$t('impression.beginner.h2')"></h2>
+      <p v-html="$t('impression.beginner.p')"></p>
+      <a @click="openModal('first')" class="box_info" v-html="$t('impression.beginner.button')"></a>
     </impression>
 
     <auction />
@@ -93,7 +85,12 @@
           "p": "もりのパーティでは、いろんなな人達が共同生活しています。<br>ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。",
           "comment": "有志によって整備されたエンドポータル付近"
         }
-      ]
+      ],
+      "beginner" : {
+        "h2": "さあ、始めましょう。",
+        "p": "まずは、はじめての方向けのページをチェックしましょう!<br>参加するときに必要な情報について説明しています！ 絶対確認しましょう!",
+        "button": "はじめての方へ!"
+      }
     }
   },
   "en": {
@@ -121,7 +118,12 @@
           "h2": "Your participation will create the first step of new connections!!",
           "p": "In Moripa, there is a lot of people sharing their unique abilities to live in. Miner, Builder, Shop Manager, and more. Let’s have fun on this server. Express your ability, experience the brand new atmosphere of the server."
         }
-      ]
+      ],
+      "beginner" : {
+        "h2": "Let's get started!",
+        "p": "In the beginning, you better check the page of “Beginner!” to get the basic information and the knowledge in order to join our server! You MUST get through it!!",
+        "button": "Beginner!"
+      }
     }
   }
 }

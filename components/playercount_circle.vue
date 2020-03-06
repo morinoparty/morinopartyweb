@@ -20,7 +20,7 @@
   },
   "en": {
     "counter_circle": {
-      "text": ["users", "Now Playing!"]
+      "text": ["people", "Now Playing!"]
     }
   }
 }

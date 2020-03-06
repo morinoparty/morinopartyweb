@@ -36,7 +36,6 @@ export default {
       axios.get(`https://api.morino.party/auctions`).then(res => {
         this.auction = res.data;
         this.loading = false;
-        console.log(res.data);
       });
     }
   },

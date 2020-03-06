@@ -111,7 +111,6 @@ export default {
         .get(`https://api.morino.party/auctions/highest/${this.auction.id}`)
         .then(res => {
           this.highest = res.data[0].amount;
-          console.log(res.data);
         });
     }
   },

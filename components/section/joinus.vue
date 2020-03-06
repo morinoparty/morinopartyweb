@@ -1,30 +1,25 @@
 <template>
   <impression position="joinus" :background="background" :players="player_list">
-    <h2>今すぐ参加しよう!</h2>
-    <p>
-      現在
-      <span>{{count}}人</span>がプレイ中!
-    </p>
+    <h2 v-html="$t('title')"></h2>
+    <p class="status" v-html="$t('playing').replace('CC', count)"></p>
     <figure class="randomplayer" v-if="player_random">
       <div class="flex">
         <img :src="'https://minotar.net/cube/'+ player_random +'/100.png'" alt />
-        <p>
-          <strong>{{player_random}}</strong>もプレイしています!
-        </p>
+        <p v-html="'<strong>'+player_random+'</strong>'+$t('ramdom_player')"></p>
       </div>
     </figure>
-    <p>
+    <p class="status">
       <span class="tag">{{ $t('version') }}</span>
       <span>{{version}}</span>
     </p>
-    <p>
+    <p class="status">
       <span class="tag">{{ $t('ip') }}</span>
       <span>visit.morino.party</span>
     </p>
     <figure class="changePhotos">
-      <h3>画像をかえる!</h3>
-      <p>Discordチャンネル「#もりすた」から選ばれたいくつかの写真をランダムで閲覧できます!</p>
-      <a @click="changePic()">画像をかえる</a>
+      <h3>{{$t('change_photos.h3')}}</h3>
+      <p>{{$t('change_photos.p')}}</p>
+      <a @click="changePic()">{{$t('change_photos.button')}}</a>
     </figure>
   </impression>
 </template>
@@ -32,8 +27,28 @@
 <i18n>
 {
     "ja" : {
+        "title": "今すぐ参加しよう!",
+        "playing": "現在<span>CC人</span>がプレイ中!",
+        "ramdom_player": "もプレイしています!",
         "version": "バージョン",
-        "ip": "IP"
+        "ip": "IP",
+        "change_photos": {
+            "h3": "画像をかえる!",
+            "p": "Discordチャンネル「#もりすた」から選ばれたいくつかの写真をランダムで閲覧できます!",
+            "button": "変えてみる!"
+        }
+    },
+    "en" : {
+        "title": "Join us now!",
+        "playing": "<span>CC people</span> are playing on our server!",
+        "ramdom_player": " is also playing!",
+        "version": "Version",
+        "ip": "IP",
+        "change_photos": {
+            "h3": "Click “Change” to shuffle the image!",
+            "p": "The random pictures from #もりすた, Moripa Discord will be randomly shown!",
+            "button": "Change"
+        }
     }
 }
 </i18n>
@@ -89,6 +104,7 @@
     padding: 5px 15px;
     border-radius: 20px;
     color: #867000;
+    font-weight: bold;
   }
   @media (max-width: 1400px) {
     display: none;
@@ -153,6 +169,16 @@ export default {
     this.background = this.pictures[
       Math.floor(Math.random() * this.pictures.length)
     ];
+    window.setInterval(() => {
+      this.player_random = this.player_list[
+        Math.floor(Math.random() * this.player_list.length)
+      ];
+    }, 7000);
+    window.setInterval(() => {
+      this.background = this.pictures[
+        Math.floor(Math.random() * this.pictures.length)
+      ];
+    }, 30000);
   }
 };
 </script>

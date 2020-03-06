@@ -68,6 +68,14 @@ section.impression {
         font-weight: bold;
         border-radius: 50px;
       }
+      @media (max-width: 767px) {
+        h2 {
+          margin-bottom: 20px;
+        }
+        .box_info {
+          margin-top: 20px;
+        }
+      }
     }
     &.joinus {
       height: 100vh;
@@ -77,9 +85,10 @@ section.impression {
         backdrop-filter: blur(10px);
         text-align: center;
         color: white;
-        p {
+        p.status {
           font-size: 1rem;
           padding-left: 0;
+          white-space: nowrap;
           span {
             font-size: 2rem;
             font-weight: bold;
@@ -113,6 +122,9 @@ section.impression {
         h2 {
           font-size: 2rem;
           line-height: 1.4;
+        }
+        p {
+          line-height: 1.7;
         }
       }
     }
@@ -238,6 +250,7 @@ section.impression {
     width: 100%;
     background-size: cover;
     background-position: center;
+    background-color: black;
   }
 }
 </style>

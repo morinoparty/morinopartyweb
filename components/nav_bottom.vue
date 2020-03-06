@@ -77,14 +77,14 @@
     "discord": "Discord"
   },
   "en": {
-    "first": "Newbie!",
+    "first": "Beginner!",
     "command": "Commands",
-    "protect": "How to Protect",
-    "createshop": "Balance",
+    "protect": "Protections",
+    "createshop": "Economics",
     "fishing": "Fishing",
-    "donate": "Donate",
-    "vote": "Vote Bonous",
-    "team": "Moderators",
+    "donate": "Donation",
+    "vote": "Votes/Bonuses",
+    "team": "Administrators",
     "wiki": "Wiki",
     "discord": "Discord"
   }
