@@ -1,40 +1,38 @@
 <template>
-  <section class="auction">
-    <article
-      class="content"
-      v-for="(content, index) in content"
+  <section class="auction" v-if="auction">
+    <card
+      v-for="(content, index) in auction"
       v-bind:key="index"
-    >
-      <h2>{{ content.title }}</h2>
-    </article>
+      :auction="content"
+    />
   </section>
 </template>
 
 <style lang="scss">
 section.auction {
   display: grid;
-  article {
-    height: 100vh;
-  }
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px;
 }
 </style>
 
 <script>
-import card from "~/components/card/normal.vue";
+import card from "~/components/card/auction.vue";
 import axios from "axios";
+import dayjs from "dayjs";
 export default {
   components: { card },
   data() {
     return {
-      content: {},
-      coming: {},
+      auction: {},
       loading: true
     };
   },
   methods: {
     fetchcontent() {
       axios.get(`https://api.morino.party/auctions`).then(res => {
-        this.content = res.data;
+        this.auction = res.data;
         this.loading = false;
         console.log(res.data);
       });

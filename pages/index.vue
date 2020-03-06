@@ -48,9 +48,9 @@
     />
 
     <style v-if="showModal">
-      html {
-        overflow: hidden;
-      }
+  html {
+    overflow: hidden;
+  }
     </style>
 
     <navBottom type="top" @openModal="openModal" />
@@ -99,21 +99,20 @@
         {
           "position":"right",
           "background":"/index/impression_1.png",
-          "h2": "走って、木を切って、あそびまわろう。",
-          "p": "もりのパーティは、“だいたいバニラ”で“だいたい最新”のマインクラフトをあそぶことができるマルチプレイサーバーです。",
-          "comment": "首都もりもとの様子"
+          "h2": "Have fun in MORIPA!",
+          "p": "Morino Party (Moripa) is the server base on Vanilla (almost without any mods), and joinable in the newest version of Minecraft.",
+          "comment": "Morimoto city in Moripa"
         },{
           "position":"left",
           "background":"/index/impression_2.png",
-          "h2": "いろんなことを起こそう。できないことをやろう。",
-          "p": "一人ではできなかったことが、もりのパーティの住人と一緒にやればできるはず!<br>マルチプレイならではの楽しみ方を、全力で楽しみましょう！",
-          "comment": "有志によって整備されたエンドポータル付近"
+          "h2": "So, what are you waiting for??",
+          "p": "Let’s create what you cannot do in a single world, huge survival base, futuristic city, and more other epic buildings. You can achieve with players in Moripa.",
+          "comment": "The epic portal created by admins"
         },{
           "position":"right",
           "background":"/index/impression_3.png",
-          "h2": "いろんな出会いがここに。",
-          "p": "もりのパーティでは、いろんなな人達が共同生活しています。<br>ひとりひとり違う、様々な個性を持ったプレイヤーと、楽しい日々を一緒に過ごしましょう。",
-          "comment": "有志によって整備されたエンドポータル付近"
+          "h2": "Your participation will create the first step of new connections!!",
+          "p": "In Moripa, there is a lot of people sharing their unique abilities to live in. MIner, Builder, Shop Manager, and more. Let’s have fun on this server. Express your ability, experience bran new atmosphere of the server."
         }
       ]
     }
