@@ -2,7 +2,7 @@
   <div>
     <counter />
     <impression
-      class="header"
+      class="header page-1"
       position="left"
       background="https://morino.party/assets/background_ap_2.webp"
     >
@@ -14,6 +14,7 @@
     <impression
       v-for="(content, index) in $t('impression.content')"
       v-bind:key="index"
+      :class="'page-' + index"
       :position="content.position"
       :background="content.background"
       :comment="content.comment"
@@ -22,22 +23,21 @@
       <p v-html="content.p"></p>
     </impression>
 
-    <impression
-      position="height_full"
-      background="https://media.discordapp.net/attachments/582015271208878090/683237959235141672/unknown.png"
-    >
+    <impression position="height_half" background="/index/joinus.png">
       <h2>さあ、始めましょう。</h2>
       <p>
         まずは、はじめての方向けのページをチェックしましょう!
-        <br />ルールなどもこちらに記載されています！
+        <br />参加する際に「必須」な参加条件や、絶対にやらなければいけないことを説明しています！
+        絶対確認してください！
       </p>
-      <div @click="openModal('first')" class="box_info">
-        <h3 style="margin: 0px;">はじめての方へ!</h3>
-      </div>
+      <a @click="openModal('first')" class="box_info">はじめての方へ!</a>
     </impression>
 
     <auction />
 
+    <joinus />
+
+    <!-- モーダル動作 -->
     <modal
       v-if="showModal"
       :class="[{ modal: true }, { active: showModal_animation_open }]"
@@ -46,14 +46,21 @@
       @click.self="closeModal()"
       @closeModal="closeModal"
     />
-
     <style v-if="showModal">
   html {
     overflow: hidden;
   }
     </style>
 
-    <navBottom type="top" @openModal="openModal" />
+    <!-- ナビバー -->
+    <navBottom v-show="$window.width > 767" type="top" @openModal="openModal" />
+    <navBottom
+      v-show="$window.width < 767"
+      class="bottom"
+      type="top_small"
+      @openModal="openModal"
+      @closeModal="closeModal"
+    />
   </div>
 </template>
 
@@ -137,10 +144,13 @@ import imglogo from "~/assets/svg/moripa-img-logo.svg";
 
 import counter from "~/components/playercount_circle.vue";
 import language from "~/components/language_swicher.vue";
+
 import impression from "~/components/section/impression.vue";
 import auction from "~/components/section/auction.vue";
+import joinus from "~/components/section/joinus.vue";
 
 import modal from "~/components/modal/post.vue";
+
 import navBottom from "~/components/nav_bottom.vue";
 
 import axios from "axios";
@@ -153,6 +163,7 @@ export default {
     language,
     impression,
     auction,
+    joinus,
     modal,
     navBottom
   },
@@ -162,7 +173,21 @@ export default {
       showModal: false,
       showModal_animation_open: false,
       // モーダル投稿内容用
-      post: {}
+      post: {},
+      opts: {
+        start: 0,
+        dir: "v",
+        loop: false,
+        duration: 300,
+        beforeChange: function(ele, current, next) {
+          console.log("before", current, next);
+          this.index = next;
+        },
+        afterChange: function(ele, current) {
+          this.index = current;
+          console.log("after", current);
+        }
+      }
     };
   },
   head() {

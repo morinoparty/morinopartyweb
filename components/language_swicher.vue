@@ -8,7 +8,8 @@
           :key="`Lang${i}`"
           :value="lang.code"
           aria-placeholder="Language"
-        >{{ lang.title }}</option>
+          >{{ lang.title }}</option
+        >
       </select>
     </div>
   </div>
@@ -20,6 +21,14 @@
   bottom: 25px;
   right: 25px;
   z-index: 99;
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 124px;
+    height: 44px;
+    z-index: 2;
+  }
   .select {
     display: flex;
     padding: 10px 20px;

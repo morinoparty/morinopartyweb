@@ -28,7 +28,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~plugins/day.js"],
+  plugins: ["~/plugins/day.js", "~/plugins/window-size.js"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -47,6 +47,7 @@ export default {
         }
       }
     ],
+    "fullpage-nuxt",
     "nuxt-svg-loader",
     "@nuxtjs/markdownit"
   ],

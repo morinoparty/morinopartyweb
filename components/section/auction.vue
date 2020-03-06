@@ -1,15 +1,20 @@
 <template>
-  <section class="auction" v-if="auction.lenght !== 0">
-    <card v-for="(content, index) in auction" v-bind:key="index" :auction="content" />
+  <section class="auction" v-if="auction.lenght != 0">
+    <div v-for="(content, index) in auction" v-bind:key="index">
+      <card v-if="index < 3" :auction="content" />
+    </div>
   </section>
 </template>
 
 <style lang="scss">
 section.auction {
-  background-color: #eeffef;
+  background-color: #ececec;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 991.98px) {
+    grid-template-columns: 1fr;
+  }
   padding: 20px;
 }
 </style>

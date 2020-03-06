@@ -33,6 +33,9 @@
   top: 15px;
   right: 15px;
   text-align: center;
+  @media (max-width: 767px) {
+    position: absolute;
+  }
   .num {
     margin: 0;
     color: white;
@@ -87,8 +90,10 @@ export default {
     const response = await axios
       .get("https://api.mcsrvstat.us/2/visit.morino.party")
       .then(v => {
-        this.loading = true;
-        this.info = v.data.players.online;
+        if (v.data.players) {
+          this.loading = true;
+          this.info = v.data.players.online;
+        }
       });
   }
 };

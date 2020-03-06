@@ -16,6 +16,26 @@
         </div>
       </div>
     </div>
+    <div :class="type" v-else-if="type == 'top_small'">
+      <a class="logo" @click="$emit('closeModal')">
+        <logo />
+      </a>
+      <div class="slider">
+        <div v-for="(content, index) in nav" :key="index" class="content">
+          <a v-if="content.path" :href="content.path">
+            <i18n :path="content.slug" tag="label" />
+          </a>
+          <div v-else>
+            <a v-if="$i18n.locale == 'ja'" @click="openModal(content.slug)">
+              <i18n :path="content.slug" tag="label" />
+            </a>
+            <a v-else @click="openModal(content.slug)">
+              <i18n :path="content.slug" tag="label" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div :class="type" v-else>
       <nuxt-link class="logo" v-if="$i18n.locale == 'ja'" :to="'/'">
         <logo />
@@ -170,15 +190,18 @@ nav#nav_bottom {
       }
     }
   }
-  .page {
+
+  .page,
+  .top_small {
     position: fixed;
-    transform: translateY(-39px);
+    top: 0;
     display: flex !important;
     overflow-x: hidden;
     z-index: 5;
     width: 100%;
     background-color: #007907;
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    height: 39px;
     a,
     a:hover {
       text-decoration: none;
@@ -222,33 +245,11 @@ nav#nav_bottom {
         max-height: 250px;
       }
     }
+  }
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    &::-webkit-scrollbar {
-      overflow: hidden;
-      width: 1px;
-      background: #fafafa;
-    }
-    &::-webkit-scrollbar:horizontal {
-      height: 1px;
-    }
-    &::-webkit-scrollbar-button {
-      display: none;
-    }
-    &::-webkit-scrollbar-piece {
-      background: #eee;
-    }
-    &::-webkit-scrollbar-piece:start {
-      background: #eee;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #333;
-    }
-    &::-webkit-scrollbar-corner {
-      background: #333;
-    }
+  .top_small {
+    bottom: 0;
+    top: inherit;
   }
 }
 </style>

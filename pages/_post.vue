@@ -1,15 +1,14 @@
 <template>
   <div>
-    <navBottom type="page" @openModal="openModal" />
-    <modal type="page" :post="blogPost" style="margin-top: 39px;" />
+    <modal type="page" :post="blogPost" />
   </div>
 </template>
 
 <script>
-import navBottom from "~/components/nav_bottom.vue";
 import modal from "~/components/modal/post.vue";
 export default {
-  components: { navBottom, modal },
+  layout: "post",
+  components: { modal },
   data() {
     return {
       blogPost: {}

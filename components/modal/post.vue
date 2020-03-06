@@ -1,5 +1,9 @@
 <template>
-  <section id="modal" :class="{ page: type == 'page' }" @click.self="$emit('closeModal')">
+  <section
+    id="modal"
+    :class="{ page: type == 'page' }"
+    @click.self="$emit('closeModal')"
+  >
     <div class="content">
       <div class="title">
         <div class="postdata">
@@ -78,6 +82,9 @@ section#modal {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 25px;
     opacity: 0;
+    @media (max-width: 767px) {
+      padding: 25px 0;
+    }
     &.active {
       opacity: 1;
       .content {
@@ -126,6 +133,9 @@ section#modal {
       padding-right: 30px;
       max-width: 730px;
       color: white;
+      @media (max-width: 767px) {
+        width: calc(100% - 30px);
+      }
       h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;

@@ -6,15 +6,9 @@
           <slot />
         </div>
       </div>
-      <div class="space"></div>
     </div>
-    <div class="comment" :class="{ [`${position}`]: true }" v-if="comment">
-      {{ comment }}
-    </div>
-    <div
-      class="background"
-      :style="'background-image: url(' + background + ');'"
-    ></div>
+    <div class="comment" :class="{ [`${position}`]: true }" v-if="comment">{{ comment }}</div>
+    <div class="background" :style="'background-image: url(' + background + ');'"></div>
   </section>
 </template>
 
@@ -32,6 +26,9 @@ section.impression {
     .title {
       color: white;
       background-color: rgba(0, 70, 3, 0.5);
+      @media (max-width: 767px) {
+        height: 100vh !important;
+      }
     }
   }
   .content {
@@ -40,7 +37,7 @@ section.impression {
     &.right {
       margin-left: auto;
     }
-    &.height_full {
+    &.height_half {
       height: inherit;
       margin-top: auto;
       width: 100%;
@@ -52,13 +49,61 @@ section.impression {
         color: white;
       }
       .box_info {
+        display: inline-block;
         cursor: pointer;
         background: white;
-        padding: 20px;
+        padding: 20px 30px;
         margin-top: 40px;
         color: #efc900;
-        h3 {
-          font-size: 1.8rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        border-radius: 50px;
+      }
+    }
+    &.joinus {
+      height: 100vh;
+      margin-top: auto;
+      .title {
+        background-color: #efc70080;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        color: white;
+        p {
+          font-size: 1rem;
+          padding-left: 0;
+          span {
+            font-size: 2rem;
+            font-weight: bold;
+            &.tag {
+              color: #867000;
+              background-color: #fff;
+              padding: 0px 10px;
+              border-radius: 10px;
+              font-size: 1rem;
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1400px) {
+      width: 50%;
+      .title {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+      .title {
+        height: 50vh;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: calc(100% - 30px);
+        h2 {
+          font-size: 2rem;
+          line-height: 1.6;
         }
       }
     }
@@ -90,6 +135,7 @@ section.impression {
     p {
       margin-bottom: 0px;
       line-height: 2;
+      padding-left: 10px;
       // text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px;
     }
   }
@@ -117,6 +163,15 @@ section.impression {
     }
     &.right {
       left: 30px;
+    }
+    @media (max-width: 767px) {
+      bottom: 10px;
+      &.left {
+        right: 10px;
+      }
+      &.right {
+        left: 10px;
+      }
     }
   }
   .background {
