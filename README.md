@@ -1,10 +1,18 @@
-# morino.party
+# もりのパーティ公式サイト
 
-> My cat&#39;s pajamas Nuxt.js project
+![もりぱ](https://user-images.githubusercontent.com/19511693/76134221-0ed21f80-6060-11ea-9f21-5d4787650b2f.png)
+もりのパーティ公式サイトです。
 
-## Build Setup
+## 貢献するには
 
-``` bash
+Issues の追加や、
+Issues にあるいろいろな修正にご協力いただけるとありがたいです!
+
+## 開発者向け情報
+
+### 環境構築の手順
+
+```bash
 # install dependencies
 $ yarn install
 
@@ -19,4 +27,6 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### ステージング・本番環境への反映
+
+`master` ブランチがアップデートされると、本番サイト https://morino.party が更新されます。

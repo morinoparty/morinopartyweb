@@ -199,11 +199,13 @@ nav#nav_bottom {
     overflow-x: hidden;
     z-index: 5;
     width: 100%;
-    background-color: #007907;
+    background-color: rgba(0, 121, 7, 0.7);
+    backdrop-filter: blur(20px);
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
     height: 39px;
     a,
     a:hover {
+      cursor: pointer;
       text-decoration: none;
       color: white;
       opacity: 0.8;
@@ -246,11 +248,16 @@ nav#nav_bottom {
       }
     }
   }
-
   .top_small {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: solid 2px #007907;
     bottom: 0;
     top: inherit;
     height: calc(39px + env(safe-area-inset-bottom));
+    a,
+    a:hover {
+      color: #007907;
+    }
     .logo {
       display: none;
     }

@@ -1,8 +1,6 @@
 <template>
   <section class="auction" v-if="auction.lenght != 0">
-    <div v-for="(content, index) in auction" v-bind:key="index">
-      <card v-if="index < 3" :auction="content" />
-    </div>
+    <card v-if="auction[0]" :auction="auction[0]" />
   </section>
 </template>
 

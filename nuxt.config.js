@@ -6,6 +6,7 @@ export default {
   head: {
     title: process.env.npm_package_name || "",
     script: [{ src: "https://kit.fontawesome.com/cf7cf76089.js" }],
+    title: "もりのパーティ! | まったりのんびりマイクラ生活!",
     meta: [
       { charset: "utf-8" },
       {
@@ -13,12 +14,42 @@ export default {
         content: "width=device-width, initial-scale=1, viewport-fit=cover"
       },
       {
+        property: "og:title",
+        content: "もりのパーティ!"
+      },
+      {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content:
+          "まったりのんびりマイクラ生活! もりのパーティは、マインクラフトサーバーを中心としたコミュニティです。"
+      },
+      {
+        property: "og:description",
+        content:
+          "まったりのんびりマイクラ生活! もりのパーティは、マインクラフトサーバーを中心としたコミュニティです。"
+      },
+      {
+        property: "og:type",
+        content: "website"
+      },
+      {
+        property: "og:site_name",
+        content: "もりのパーティ!"
+      },
+      {
+        property: "og:image",
+        content: "https://morino.party/img/thumbnail.jpg"
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image"
+      },
+      {
+        name: "twitter:site",
+        content: "morinoparty"
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/img/icon.png" }]
   },
   /*
    ** Customize the progress-bar color
@@ -52,7 +83,8 @@ export default {
     ],
     "fullpage-nuxt",
     "nuxt-svg-loader",
-    "@nuxtjs/markdownit"
+    "@nuxtjs/markdownit",
+    "@nuxtjs/sitemap"
   ],
 
   i18n: {
@@ -73,17 +105,35 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    hardSource: true,
     extend(config, ctx) {}
+  },
+  sitemap: {
+    path: "/sitemap.xml",
+    hostname: "https://morino.party",
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    exclude: ["/en/**", "/admin/**"],
+    generate: false
   },
   generate: {
     routes: function() {
       const fs = require("fs");
       const path = require("path");
-      return fs.readdirSync("./assets/content/blog").map(file => {
+      const post = fs.readdirSync("./assets/content/blog").map(file => {
         return {
           route: `/${path.parse(file).name}`, // Return the slug
           payload: require(`./assets/content/blog/${file}`)
         };
+      });
+      const post_en = fs.readdirSync("./assets/content/blog").map(file => {
+        return {
+          route: `/en/${path.parse(file).name}`, // Return the slug
+          payload: require(`./assets/content/blog/${file}`)
+        };
+      });
+      return Promise.all([post, post_en]).then(values => {
+        return [...values[0], ...values[1]];
       });
     }
   }

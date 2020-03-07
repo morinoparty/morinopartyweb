@@ -86,7 +86,6 @@ section#modal {
       .content {
         transform: translateY(0);
         opacity: 1;
-
         box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.7);
       }
     }
@@ -104,7 +103,10 @@ section#modal {
       display: none;
     }
     .title {
-      background-color: #43a749;
+      background: rgba(0, 121, 7, 0.03);
+      .postdata {
+        color: rgba(0, 121, 7, 1);
+      }
     }
   }
   .content {
@@ -215,7 +217,7 @@ section#modal {
       box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
     }
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-top: 50px;
     }
     a {
@@ -244,6 +246,14 @@ section#modal {
       padding: 0.75rem;
       vertical-align: top;
       border-top: 1px solid #dee2e6;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 2;
+      &:last-of-type {
+        margin-bottom: 1rem;
+      }
     }
   }
 }

@@ -13,6 +13,7 @@
   "dependencies": {
     "@intlify/vue-i18n-loader": "^0.6.1",
     "@nuxtjs/markdownit": "^1.2.9",
+    "@nuxtjs/sitemap": "^2.0.1",
     "axios": "^0.19.2",
     "dayjs": "^1.8.21",
     "fullpage-nuxt": "^0.0.3",
