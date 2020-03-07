@@ -95,32 +95,32 @@
   "en": {
     "impression": {
       "header": {
-        "h2": "Spend together,<br>In the forest.",
-        "p": "MorinoParty is a community based on Minecraft Server"
+        "h2": "Let's have fun,<br>together in the forest.",
+        "p": "MorinoParty is a community based on a Minecraft Server"
       },
       "content" : [
         {
           "position":"right",
           "background":"/index/impression_1.png",
-          "h2": "Have fun in the Morino Party!",
-          "p": "Morino Party (Moripa) is the server base on Vanilla (almost without any mods), and joinable in the newest version of Minecraft.",
+          "h2": "Let's have fun in the Morino Party server!",
+          "p": "Morino Party (Moripa) is a server based on Vanilla Minecraft and it has minimal plugins. You can join using the newest version of Minecraft.",
           "comment": "Morimoto city in Moripa"
         },{
           "position":"left",
           "background":"/index/impression_2.png",
-          "h2": "Just do it, whatever you want to do. So, what are you waiting for??",
-          "p": "Let’s create what you cannot do in a single world, huge survival base, futuristic city, and more other epic buildings. You can achieve with players in Moripa.",
-          "comment": "The epic portals created by players in the server"
+          "h2": "Just do it, whatever you want to do. What are you waiting for??",
+          "p": "In Moripa, you can create what you cannot in a singleplayer world. Create huge survival bases, futuristic cities, and even more epic buildings. In Moripa, we can achieve our dreams together!",
+          "comment": "Epic portals created by players in the server"
         },{
           "position":"right",
           "background":"/index/impression_3.png",
-          "h2": "Your participation will create the first step of new connections!!",
-          "p": "In Moripa, there is a lot of people sharing their unique abilities to live in. Miner, Builder, Shop Manager, and more. Let’s have fun on this server. Express your ability, experience the brand new atmosphere of the server."
+          "h2": "Your participation is the first step to creating new connections!!",
+          "p": "In Moripa, there are a lot of people with unique personalities and traits. Miner, Builder, Shop Manager, and many more. Let’s have fun on this server. Express yourself, and have fun on the server."
         }
       ],
       "beginner" : {
         "h2": "Let's get started!",
-        "p": "In the beginning, you better check the page of “Beginner!” to get the basic information and the knowledge in order to join our server! You MUST get through it!!",
+        "p": "In the beginning, go check the “Beginner!” page to get basic information and knowledge to join our server! You MUST get through it!!",
         "button": "Beginner!"
       }
     }
