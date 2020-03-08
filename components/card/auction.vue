@@ -110,7 +110,14 @@ export default {
       axios
         .get(`https://api.morino.party/auctions/highest/${this.auction.id}`)
         .then(res => {
-          this.highest = res.data[0].amount;
+          if (res.data) {
+            this.highest = res.data[0].amount;
+          } else {
+            this.highest = 0;
+          }
+        })
+        .catch(error => {
+          this.highest = 0;
         });
     }
   },
