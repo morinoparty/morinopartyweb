@@ -105,7 +105,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    hardSource: true,
     extend(config, ctx) {}
   },
   sitemap: {
