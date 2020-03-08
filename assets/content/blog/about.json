@@ -1,0 +1,10 @@
+{
+  "date": "2020-03-08T16:01:52.786Z",
+  "title": "当サイトについて",
+  "slug": "about",
+  "description": "もりのパーティ公式サイトについて",
+  "body": "## 当サイトについて\n\nもりぱ民のみなさんに、正しい情報を直接をお届けするために、 もりのパーティ公式サイトが2020年 3月7日あたらしくなりました！\n\n新しいデザイン、見たいものがすぐ見れるサイトへと生まれ変わり、多言語への対応も行っています！\n\nまた、#もりすた♣からの画像を拝借し、いくつかの画像をスライドショー形式で掲載しています！（順次更新）\n\n新しくなった、もりのパーティ公式サイト、ぜひご覧ください![](https://morino.party/ \"https\\://morino.party/\")\n\n## 開発者の方へ\n\n当サイトはNuxt.jsを用いて開発されています!\n\n要望・修正がありましたらIssuesに打ち込んで行ってください!\n\nまた、Issuesにあるいろいろな修正にもご協力いただけるとありがたいです!\n\n[https://github.com/morinoparty/morinopartyweb](https://github.com/morinoparty/morinopartyweb \"https\\://github.com/morinoparty/morinopartyweb\")",
+  "title_en": "About this site",
+  "description_en": "もりのパーティ公式サイトについて",
+  "body_en": "This text is not translated.\n\nPlease wait until the text is translated."
+}
