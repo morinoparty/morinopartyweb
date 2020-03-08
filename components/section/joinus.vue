@@ -139,7 +139,9 @@ export default {
       count: "…",
       version: "…",
       player_list: {},
-      player_random: ""
+      player_random: "",
+      player_main: [],
+      player_res: []
     };
   },
   async created() {
@@ -149,16 +151,22 @@ export default {
     if (r_proxy.data.online) {
       this.count = r_proxy.data.players.online;
       this.version = r_proxy.data.version;
-
-      const r_main = await axios.get(
-        "https://api.mcsrvstat.us/2/main3.srv.morino.party"
-      );
-      const player_main = r_main.data.players.list;
-      const r_res = await axios.get(
-        "https://api.mcsrvstat.us/2/res2.srv.morino.party"
-      );
-      const player_res = r_res.data.players.list;
-      this.player_list = player_main.concat(player_res);
+      this.player_list = [];
+      const r_main = await axios
+        .get("https://api.mcsrvstat.us/2/main3.srv.morino.party")
+        .then(v => {
+          if (v.data.online) {
+            this.player_main = v.data.players.list;
+          }
+        });
+      const r_res = await axios
+        .get("https://api.mcsrvstat.us/2/res2.srv.morino.party")
+        .then(v => {
+          if (v.data.online) {
+            this.player_res = v.data.players.list;
+          }
+        });
+      this.player_list = this.player_main.concat(this.player_res);
       this.player_random = this.player_list[
         Math.floor(Math.random() * this.player_list.length)
       ];
