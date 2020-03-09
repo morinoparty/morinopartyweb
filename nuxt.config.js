@@ -84,7 +84,8 @@ export default {
     "fullpage-nuxt",
     "nuxt-svg-loader",
     "@nuxtjs/markdownit",
-    "@nuxtjs/sitemap"
+    "@nuxtjs/sitemap",
+    "nuxt-purgecss"
   ],
 
   i18n: {
@@ -105,7 +106,8 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    extractCSS: true
   },
   sitemap: {
     path: "/sitemap.xml",
