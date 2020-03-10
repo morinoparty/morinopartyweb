@@ -1,7 +1,7 @@
 <template>
   <div>
     <counter />
-    <impression class="header page-1" position="left" background="/index/header.jpg">
+    <impression class="header" position="left" background="/index/header.jpg">
       <h2 v-html="$t('impression.header.h2')"></h2>
       <logo />
       <p v-html="$t('impression.header.p')"></p>
@@ -10,7 +10,6 @@
     <impression
       v-for="(content, index) in $t('impression.content')"
       v-bind:key="index"
-      :class="'page-' + index"
       :position="content.position"
       :background="content.background"
       :comment="content.comment"
@@ -22,7 +21,11 @@
     <impression position="height_half" background="/index/joinus_3.png">
       <h2 v-html="$t('impression.beginner.h2')"></h2>
       <p v-html="$t('impression.beginner.p')"></p>
-      <a @click="openModal('first')" class="box_info" v-html="$t('impression.beginner.button')"></a>
+      <a
+        @click="openModal('first')"
+        class="box_info"
+        v-html="$t('impression.beginner.button')"
+      ></a>
     </impression>
 
     <auction />
@@ -39,9 +42,9 @@
       @closeModal="closeModal"
     />
     <style v-if="showModal">
-  html {
-    overflow: hidden;
-  }
+      html {
+        overflow: hidden;
+      }
     </style>
 
     <!-- ナビバー -->
