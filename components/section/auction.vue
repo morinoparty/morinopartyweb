@@ -1,6 +1,6 @@
 <template>
   <section class="auction" v-if="auction.lenght != 0">
-    <card v-if="auction[0]" :auction="auction[0]" />
+    <auction v-if="auction[0]" :auction="auction[0]" />
   </section>
 </template>
 
@@ -18,11 +18,11 @@ section.auction {
 </style>
 
 <script>
-import card from "~/components/card/auction.vue";
+import auction from "~/components/card/auction.vue";
 import axios from "axios";
 import dayjs from "dayjs";
 export default {
-  components: { card },
+  components: { auction },
   data() {
     return {
       auction: {},
