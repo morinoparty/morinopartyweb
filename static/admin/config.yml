@@ -52,7 +52,7 @@ collections:
           label: "カテゴリ",
           name: "category",
           widget: "relation",
-          collection: "categories", # 別のcollectionのnameと一致させて紐づけ
+          collection: "news-categories", # 別のcollectionのnameと一致させて紐づけ
           searchFields: ["title", "body"], # 選択する時に検索できるフィールド
           valueField: "slug", # 選択後に表示されるフィールド
           displayFields: ["title"], # 選択中に一覧に表示されるフィールド
