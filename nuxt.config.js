@@ -140,7 +140,7 @@ export default {
         };
       });
       return Promise.all([post, post_en, news]).then(values => {
-        return [...values[0], ...values[1]];
+        return [...values[0], ...values[1], ...values[2]];
       });
     }
   }
