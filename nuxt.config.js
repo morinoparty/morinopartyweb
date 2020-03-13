@@ -135,7 +135,7 @@ export default {
       });
       const news = fs.readdirSync("./assets/content/news").map(file => {
         return {
-          route: `/${path.parse(file).name}`, // Return the slug
+          route: `/news/${path.parse(file).name}`, // Return the slug
           payload: require(`./assets/content/news/${file}`)
         };
       });
