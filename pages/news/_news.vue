@@ -32,7 +32,7 @@ export default {
         },
         {
           property: "og:image",
-          content: this.blogPost.image
+          content: "https://morino.party/" + this.blogPost.image
         }
       ]
     };
