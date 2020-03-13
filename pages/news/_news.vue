@@ -29,6 +29,10 @@ export default {
         {
           property: "og:url",
           content: "https://morino.party/news/" + this.$nuxt.$route.params.post
+        },
+        {
+          property: "og:image",
+          content: this.blogPost.image
         }
       ]
     };
