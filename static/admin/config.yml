@@ -35,7 +35,6 @@ collections:
           widget: "string",
         }
       - { label: "本文 (英語)", name: "body_en", widget: "markdown" }
-
   - name: "news"
     label: "ニュース"
     format: "json"
