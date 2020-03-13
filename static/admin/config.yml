@@ -7,7 +7,7 @@ public_folder: /img
 
 collections:
   - name: "content"
-    label: "Content"
+    label: "ページ"
     format: "json"
     folder: "assets/content/blog"
     create: true
@@ -35,3 +35,25 @@ collections:
           widget: "string",
         }
       - { label: "本文 (英語)", name: "body_en", widget: "markdown" }
+
+  - name: "news"
+    label: "ニュース"
+    format: "json"
+    folder: "assets/content/news"
+    create: true
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "URL(英数字を使ってください)", name: "slug", widget: "string" }
+      - { label: "かんたんな説明文", name: "description", widget: "string" }
+      - { label: "作成日", name: "date", widget: "datetime" }
+      - {
+          label: "カバー画像",
+          name: "image",
+          widget: "image",
+          required: false,
+          tagname: "",
+        }
+      - { label: "本文 (日本語)", name: "body", widget: "markdown" }
