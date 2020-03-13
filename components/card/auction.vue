@@ -20,7 +20,7 @@
   },
   "en" : {
     "time_limit" : "Up to MMMM D, HH:mm",
-    "auction": "Land auction being held",
+    "auction": "Land auction has been ranched",
     "unit": " Yen"
   }
 }
