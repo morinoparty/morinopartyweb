@@ -1,9 +1,13 @@
 <template>
-  <section id="modal" :class="{ page: type == 'page' }" @click.self="$emit('closeModal')">
+  <section
+    id="modal"
+    :class="[{ page: type == 'page' },{ page: type == 'news' }]"
+    @click.self="$emit('closeModal')"
+  >
     <div class="content">
       <div class="title">
         <div class="postdata">
-          <div v-if="$i18n.locale == 'ja'">
+          <div v-if="$i18n.locale == 'ja' || type == 'news'">
             <h1>{{ post.title }}</h1>
             <p>{{ post.description }}</p>
           </div>
@@ -18,7 +22,7 @@
         </div>
       </div>
       <div class="body">
-        <div v-if="$i18n.locale == 'ja'">
+        <div v-if="$i18n.locale == 'ja' || type == 'news'">
           <div class="container" v-html="$md.render(post.body)"></div>
         </div>
         <div v-else>

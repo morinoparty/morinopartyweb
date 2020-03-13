@@ -21,41 +21,35 @@
     <impression position="height_half" background="/index/joinus_3.png">
       <h2 v-html="$t('impression.beginner.h2')"></h2>
       <p v-html="$t('impression.beginner.p')"></p>
-      <a
-        @click="openModal('first')"
-        class="box_info"
-        v-html="$t('impression.beginner.button')"
-      ></a>
+      <a @click="openModal('first')" class="box_info" v-html="$t('impression.beginner.button')"></a>
     </impression>
 
-    <auction />
+    <cards />
 
     <joinus />
 
     <!-- モーダル動作 -->
-    <modal
-      v-if="showModal"
-      :class="[{ modal: true }, { active: showModal_animation_open }]"
-      :post="post"
-      type="modal"
-      @click.self="closeModal()"
-      @closeModal="closeModal"
-    />
-    <style v-if="showModal">
-      html {
-        overflow: hidden;
-      }
-    </style>
+    <client-only placeholder="Loading...">
+      <modal
+        v-if="showModal"
+        :class="[{ modal: true }, { active: showModal_animation_open }]"
+        :post="post"
+        type="modal"
+        @click.self="closeModal()"
+        @closeModal="closeModal"
+      />
+      <style v-if="showModal">
+  html {
+    overflow: hidden;
+  }
+      </style>
+    </client-only>
 
     <!-- ナビバー -->
-    <navBottom v-show="$window.width > 767" type="top" @openModal="openModal" />
-    <navBottom
-      v-show="$window.width < 767"
-      class="bottom"
-      type="top_small"
-      @openModal="openModal"
-      @closeModal="closeModal"
-    />
+    <client-only placeholder="Loading...">
+      <navBottom type="top" @openModal="openModal" />
+      <navBottom class="bottom" type="top_small" @openModal="openModal" @closeModal="closeModal" />
+    </client-only>
   </div>
 </template>
 
@@ -150,7 +144,7 @@ import counter from "~/components/playercount_circle.vue";
 import language from "~/components/language_swicher.vue";
 
 import impression from "~/components/section/impression.vue";
-import auction from "~/components/section/auction.vue";
+import cards from "~/components/section/auction.vue";
 import joinus from "~/components/section/joinus.vue";
 
 import modal from "~/components/modal/post.vue";
@@ -166,7 +160,7 @@ export default {
     counter,
     language,
     impression,
-    auction,
+    cards,
     joinus,
     modal,
     navBottom

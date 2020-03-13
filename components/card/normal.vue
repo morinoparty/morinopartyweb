@@ -1,6 +1,12 @@
 <template>
   <div>
-    <a class="content" :href="href">
+    <component
+      class="content"
+      :class="type"
+      :is="isInternalLink(href) ? 'nuxt-link' : 'a'"
+      :to="isInternalLink(href) ? href : ''"
+      :href="isInternalLink(href) ? '' : href"
+    >
       <div class="image" :style="'background-image: url(' + background + ');'">
         <div class="background-color"></div>
         <div class="info">
@@ -13,7 +19,7 @@
       <div class="description">
         <p>{{ description }}</p>
       </div>
-    </a>
+    </component>
   </div>
 </template>
 
@@ -21,13 +27,19 @@
 export default {
   props: [
     "href",
+    "type",
     "background",
     "subtitle",
     "title",
     "label_left",
     "label_right",
     "description"
-  ]
+  ],
+  methods: {
+    isInternalLink(path) {
+      return !/^https?:\/\//.test(path);
+    }
+  }
 };
 </script>
 
@@ -57,6 +69,16 @@ a.content {
       font-size: 0.8rem !important;
     }
   }
+  &.auction {
+    .image .background-color {
+      background-color: rgba(0, 121, 7, 0.5);
+    }
+  }
+  &.news {
+    .image .background-color {
+      background-color: rgba(0, 93, 121, 0.5);
+    }
+  }
   .image {
     position: relative;
     height: 80%;
@@ -66,7 +88,6 @@ a.content {
       position: absolute;
       height: 100%;
       width: 100%;
-      background-color: rgba(0, 121, 7, 0.5);
     }
     .info {
       position: absolute;

@@ -254,6 +254,11 @@ nav#nav_bottom {
     bottom: 0;
     top: inherit;
     height: calc(39px + env(safe-area-inset-bottom));
+    display: none !important;
+
+    @media (max-width: 767px) {
+      display: flex !important;
+    }
     a,
     a:hover {
       color: #007907;
@@ -266,6 +271,12 @@ nav#nav_bottom {
     }
     .content {
       padding: 8px 10px;
+    }
+  }
+
+  .top {
+    @media (max-width: 767px) {
+      display: none;
     }
   }
 }

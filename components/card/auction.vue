@@ -2,6 +2,7 @@
   <div>
     <card
       :href="'https://support.morino.party/auctions/' + auction.id"
+      :type="type"
       :background="auction.thumbnail"
       :subtitle="$dayjs(auction.time_limit).format($t('time_limit'))"
       :title="auction.title"
@@ -31,7 +32,7 @@ import card from "~/components/card/normal.vue";
 
 import axios from "axios";
 export default {
-  props: ["auction"],
+  props: ["auction", "type"],
   components: {
     card
   },

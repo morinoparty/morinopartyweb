@@ -2,6 +2,7 @@ backend:
   name: git-gateway
   branch: master
 
+publish_mode: editorial_workflow
 media_folder: static/img
 public_folder: /img
 
@@ -47,6 +48,15 @@ collections:
       - { label: "タイトル", name: "title", widget: "string" }
       - { label: "URL(英数字を使ってください)", name: "slug", widget: "string" }
       - { label: "かんたんな説明文", name: "description", widget: "string" }
+      - {
+          label: "カテゴリ",
+          name: "category",
+          widget: "relation",
+          collection: "categories", # 別のcollectionのnameと一致させて紐づけ
+          searchFields: ["title", "body"], # 選択する時に検索できるフィールド
+          valueField: "slug", # 選択後に表示されるフィールド
+          displayFields: ["title"], # 選択中に一覧に表示されるフィールド
+        }
       - { label: "作成日", name: "date", widget: "datetime" }
       - {
           label: "カバー画像",
@@ -56,3 +66,15 @@ collections:
           tagname: "",
         }
       - { label: "本文 (日本語)", name: "body", widget: "markdown" }
+  - name: "news-categories"
+    label: "ニュースカテゴリ"
+    format: "json"
+    folder: "assets/content/categories"
+    create: true
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "カテゴリ名", name: "title", widget: "string" }
+      - { label: "URL(英数字を使ってください)", name: "slug", widget: "string" }
+      - { label: "説明文", name: "body", widget: "text" }

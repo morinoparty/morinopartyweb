@@ -1,5 +1,5 @@
 export default {
-  mode: "spa",
+  mode: "universal",
   /*
    ** Headers of the page
    */
@@ -62,7 +62,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/day.js", "~/plugins/window-size.js"],
+  plugins: ["~/plugins/day.js"],
   /*
    ** Nuxt.js dev-modules
    */
@@ -133,7 +133,13 @@ export default {
           payload: require(`./assets/content/blog/${file}`)
         };
       });
-      return Promise.all([post, post_en]).then(values => {
+      const news = fs.readdirSync("./assets/content/news").map(file => {
+        return {
+          route: `/${path.parse(file).name}`, // Return the slug
+          payload: require(`./assets/content/news/${file}`)
+        };
+      });
+      return Promise.all([post, post_en, news]).then(values => {
         return [...values[0], ...values[1]];
       });
     }
