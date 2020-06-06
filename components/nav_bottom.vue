@@ -109,7 +109,7 @@ export default {
         { slug: "donate", icon: "fas fa-piggy-bank" },
         {
           slug: "team",
-          path: "https://support.morino.party/team",
+          path: "https://www.notion.so/morinoparty2/4d4107d744dc4caf861fd703bf3d3175",
           icon: "fas fa-ambulance"
         },
         {
@@ -119,7 +119,7 @@ export default {
         },
         {
           slug: "discord",
-          path: "https://discordapp.com",
+          path: "https://discord.gg/9HdanPM",
           icon: "fab fa-discord"
         }
       ]
