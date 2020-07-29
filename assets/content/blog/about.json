@@ -4,7 +4,7 @@
   "slug": "about",
   "description": "もりのパーティ公式サイトについて",
   "body": "## 当サイトについて\n\nもりぱ民のみなさんに、正しい情報を直接をお届けするために、 もりのパーティ公式サイトが2020年 3月7日あたらしくなりました！\n\n新しいデザイン、見たいものがすぐ見れるサイトへと生まれ変わり、多言語への対応も行っています！\n\nまた、#もりすた♣からの画像を拝借し、いくつかの画像をスライドショー形式で掲載しています！（順次更新）\n\n新しくなった、もりのパーティ公式サイト、ぜひご覧ください![](https://morino.party/ \"https\\://morino.party/\")\n\n## 開発者の方へ\n\n当サイトはNuxt.jsを用いて開発されています!\n\n要望・修正がありましたらIssuesに打ち込んで行ってください!\n\nまた、Issuesにあるいろいろな修正にもご協力いただけるとありがたいです!\n\n[https://github.com/morinoparty/morinopartyweb](https://github.com/morinoparty/morinopartyweb \"https\\://github.com/morinoparty/morinopartyweb\")",
-  "title_en": "About this site",
-  "description_en": "もりのパーティ公式サイトについて",
-  "body_en": "This text is not translated.\n\nPlease wait until the text is translated."
+  "title_en": "About our website",
+  "description_en": "Official MORIPA website",
+  "body_en": "## **About our website**\n\nTo directly convey new information to all MORIPA players, we released the new official website on **March 7th, 2020**! \n\nNew design, able to search whatever you want, corresponded with multi-language!\n\nMoreover, the picture from **\\#もりすた♣** will be automatically posted as a slideshow below the website!  \n\nWe are looking forward to you to take a look at our new MORIPA website. <https://https//morino.party/>\n\n## To Developers\n\nOur website is developed based on Nuxt.js! If you have a Request/Modification, send it to ISSUES!\n\nIn addition, we are looking for cooperation for those ISSUES part!\n\n[https://github.com/morinoparty/morinopartyweb](https://github.com/morinoparty/morinopartyweb \"https\\://github.com/morinoparty/morinopartyweb\")"
 }
