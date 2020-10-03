@@ -13,7 +13,7 @@
         トップ
       </nuxt-link>
       <nuxt-link
-        v-for="(content, index) in mapLink"
+        v-for="(content, index) in map"
         :key="index"
         :to="`/maps/${content.slug}`"
         class="mapBar_link"
@@ -29,15 +29,45 @@
 export default {
   data() {
     return {
-      mapLink: [
-        {
+      map: {
+        lobby: {
           slug: 'lobby',
-          title: 'ロビー鯖'
+          title: 'ロビー'
         },
-        { slug: 'main',
-          title: 'メイン鯖'
+        main: {
+          slug: 'main',
+          title: '生活'
+        }
+      }
+    }
+  },
+  head() {
+    return {
+      title: this.map[this.$nuxt.$route.params.id].title + "サーバーのリアルタイムマップ | もりのパーティ!",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "もりのパーティ"+this.map[this.$nuxt.$route.params.id].title　+　"サーバーのリアルタイムマップです"
+        },
+        {
+          property: "og:title",
+          content: this.map[this.$nuxt.$route.params.id].title + "サーバーのリアルタイムマップ"
+        },
+        {
+          property: "og:description",
+          content: "もりのパーティ"+this.map[this.$nuxt.$route.params.id].title + "サーバーのリアルタイムマップです"
+        },
+        {
+          property: "og:url",
+          content: "https://morino.party/maps/" + this.$nuxt.$route.params.id
         }
       ]
+    };
+  },
+  created() {
+    if(!this.map[this.$nuxt.$route.params.id]) {
+      this.$router.push("/maps/lobby");
     }
   }
 };
