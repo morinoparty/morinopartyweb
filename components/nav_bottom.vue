@@ -74,7 +74,8 @@
     "vote": "投票ボーナス",
     "team": "運営チーム",
     "wiki": "Wiki",
-    "discord": "Discord"
+    "discord": "Discord",
+    "maps": "マップ"
   },
   "en": {
     "first": "Beginner!",
@@ -86,7 +87,8 @@
     "vote": "Votes/Bonuses",
     "team": "Administrators",
     "wiki": "Wiki",
-    "discord": "Discord"
+    "discord": "Discord",
+    "maps": "Maps"
   }
 }
 </i18n>
@@ -121,6 +123,11 @@ export default {
           slug: "discord",
           path: "https://discord.gg/9HdanPM",
           icon: "fab fa-discord"
+        },
+        {
+          slug: "maps",
+          path: "/maps/lobby",
+          icon: "fas fa-map-marked-alt"
         }
       ]
     };
