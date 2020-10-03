@@ -1,5 +1,6 @@
 export default {
   mode: "universal",
+  target: "static",
   /*
    ** Headers of the page
    */
@@ -139,8 +140,13 @@ export default {
           payload: require(`./assets/content/news/${file}`)
         };
       });
-      return Promise.all([post, post_en, news]).then(values => {
-        return [...values[0], ...values[1], ...values[2]];
+      const maps = ['main', 'lobby'].map(url => {
+        return {
+          route: `/maps/${url}`
+        }
+      })
+      return Promise.all([post, post_en, news, maps]).then(values => {
+        return [...values[0], ...values[1], ...values[2], ...values[3]];
       });
     }
   }
