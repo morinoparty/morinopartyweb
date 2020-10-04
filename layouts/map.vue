@@ -2,6 +2,7 @@
   <div style="overflow: hidden; height: 100vh">
     <iframe class="mapFrame"
       title="Inline Frame Example"
+      loading="lazy"
       :src="`https://${ $route.params.id }.map.morino.party`">
     </iframe>
     <nuxt-link to="/"><img class="mapIcon" src="/img/icon.png" alt=""></nuxt-link>
