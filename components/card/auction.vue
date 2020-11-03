@@ -21,7 +21,7 @@
   },
   "en" : {
     "time_limit" : "Up to MMMM D, HH:mm",
-    "auction": "Land auction has been ranched",
+    "auction": "Land auction has been lanched",
     "unit": " Yen"
   }
 }
